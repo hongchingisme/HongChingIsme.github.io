@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      個人網頁 - CSS 排版練習 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">個人網頁 - CSS 排版練習</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/CSS-%E4%BD%9C%E5%93%81/" title="CSS 作品">
+                    <b>#</b> CSS 作品
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="個人網頁-CSS-排版練習"><a href="#個人網頁-CSS-排版練習" class="headerlink" title="個人網頁 - CSS 排版練習"></a>個人網頁 - CSS 排版練習</h1><p><a target="_blank" rel="noopener" href="https://hackmd.io/@jIw4XCELQByqRnyHflOKKw/Sk2ktG5sw">程式碼</a></p>
+<h1 id="作品"><a href="#作品" class="headerlink" title="作品"></a><a target="_blank" rel="noopener" href="https://hongchingisme.github.io/portfolio_practice/">作品</a></h1><p><img src="https://i.imgur.com/TvxLUPH.png"></p>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>這個專案的 Html 部分問題不太多，主要是在於 CSS 的方面遇到比較多問題。</p>
+<ol>
+<li>flex-basis 的用法</li>
+<li>grid的用法是第一次使用，很不熟，變成用抄的，然後才去理解</li>
+<li>root 的用法</li>
+<li>選單選取後，定位與圖層的觀念</li>
+<li>不會將網頁寫成響應式</li>
+<li>第一次製作漢堡</li>
+</ol>
+<p>接著會會針對這專案遇到的問題一一去分析我如何理解與解決的</p>
+<hr>
+<h2 id="1-flex-basis"><a href="#1-flex-basis" class="headerlink" title="1. flex-basis"></a>1. flex-basis</h2><p>專案這邊有用到這個屬性，我一開始看不懂，後來才知道他是要將專案中的圖片個別去做縮小才使用這個語法</p>
+<h3 id="圖解-Flexbox-進階屬性"><a href="#圖解-Flexbox-進階屬性" class="headerlink" title="圖解 Flexbox 進階屬性"></a><a target="_blank" rel="noopener" href="https://cythilya.github.io/2017/04/06/flexbox-advance/">圖解 Flexbox 進階屬性</a></h3><p>會找一天來理解flexbox的屬性，之前都是碰到一個了解一個，應該要更深入去學習才好。</p>
+<hr>
+<h2 id="2-gird用法"><a href="#2-gird用法" class="headerlink" title="2. gird用法"></a>2. gird用法</h2><p>這裡是一種我從沒接觸過的切版方式，讓會讓包住的div自動去切成各符合大小的容器，非常方便。</p>
+<p>專案很多都是使用 <code>display: grid;</code>  <code>grid-template-columns:repeat(3,1fr);</code>  <code>grid-gap: 2rem; </code></p>
+<p>而 gird的用法 都要先從 <code>display:grid</code> 開始，就可以自定義了，接著用 <code>grid-template-columns:repeat</code> 輸入重複次數與切法，像這邊的 fr 就是 「 全名是 fraction (分數)，這個分數不是 score 那個分數，而是數學分子 + 分母的那個分數。</p>
+<p>我們可以用 fr 去設定 CSS Grid 的相對寬度，以達到 RWD 的縮放效果。</p>
+<p>這邊輸入的1fr 就是 1/3的意思，將版面切成三個 3/1 就會變成各三個的意思，非常方便。</p>
+<p>最後用<code>grid-gap</code> 去調整 上下間距。</p>
+<p>ex:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.services-main</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: grid;</span><br><span class="line">    grid-template-<span class="attribute">columns</span>:<span class="built_in">repeat</span>(<span class="number">3</span>,<span class="number">1</span>fr);</span><br><span class="line">    grid-gap: <span class="number">2rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/56diQQs.png"></p>
+<p>如上圖所示，自動切出三個我們要的盒子。</p>
+<h3 id="CSS-Grid-屬性介紹"><a href="#CSS-Grid-屬性介紹" class="headerlink" title="CSS Grid 屬性介紹"></a><a target="_blank" rel="noopener" href="https://wcc723.github.io/css/2017/03/22/css-grid-layout/">CSS Grid 屬性介紹</a></h3><h3 id="使用-Grid-margin-來達到垂直置中目的"><a href="#使用-Grid-margin-來達到垂直置中目的" class="headerlink" title="使用 Grid + margin 來達到垂直置中目的"></a><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10206523">使用 Grid + margin 來達到垂直置中目的</a></h3><h3 id="CSS-Grid-語法筆記"><a href="#CSS-Grid-語法筆記" class="headerlink" title="CSS Grid 語法筆記"></a><a target="_blank" rel="noopener" href="https://muki.tw/tech/css-grid-note/#%E6%96%B0%E7%9A%84%E5%96%AE%E4%BD%8D%EF%BC%9Afr">CSS Grid 語法筆記</a></h3><hr>
+<h2 id="3-root-的用法"><a href="#3-root-的用法" class="headerlink" title="3. root 的用法"></a>3. root 的用法</h2><p>可以在 Css 中先加入 root 來設定變數，我一開始也嚇到，覺得在 css 裡面怎麼有 var 的出現，又不是 js ，後來查一查才知道原來可以設定 css 變數，在切版的過程中可以更順利一點。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">    --darkBg:<span class="number">#222</span>;</span><br><span class="line">    --darkerBg:<span class="number">#1f1f1f</span>;</span><br><span class="line">    --bgAccent:<span class="number">#F26C4F</span>;</span><br><span class="line">    --bgAccentDark :<span class="number">#E84A2C</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>本專案主要的用法是將專案配好的顏色先變成變數，這樣在設定背景顏色或者字體顏色的時候，可以很快地找到顏色。</p>
+<p>使用方式為:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background</span>: <span class="built_in">var</span>(--bgAccent);</span><br></pre></td></tr></table></figure>
+
+
+<p>使用 var 呼叫就可以了 !</p>
+<h3 id="root-根目錄選取器-叫你阿爸出來講"><a href="#root-根目錄選取器-叫你阿爸出來講" class="headerlink" title=":root 根目錄選取器 - 叫你阿爸出來講"></a><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10228111">:root 根目錄選取器 - 叫你阿爸出來講</a></h3><hr>
+<h2 id="4-選單選取後，定位與圖層的觀念"><a href="#4-選單選取後，定位與圖層的觀念" class="headerlink" title="4. 選單選取後，定位與圖層的觀念"></a>4. 選單選取後，定位與圖層的觀念</h2><p>這邊是我搞不懂的地方，絕對定位跟相對定位我有基礎的知識，例如沒有設定定位點就會自動定位在 body 上，但我不懂的是，為什麼要設定兩個相對定位呢?</p>
+<p>這邊是要實現一個功能，就是當我滑鼠移過去的時候，我的底部會有一個背景色跑出來的效果，</p>
+<p>專案教學是再寫一個 div ， 給他大小與我們要的背景漸層顏色，然後偏移，使用定位，定在盒子上，接著用用<code>z-index</code>的方式讓圖層往下，再寫一個 hover 效果就出來了。</p>
+<p>但是很明顯沒那麼簡單，實際上影片也是有遇到圖層設定不好的問題。</p>
+<h3 id="教學影片-17-37開始"><a href="#教學影片-17-37開始" class="headerlink" title="教學影片-17:37開始"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=zWzI25FcWg8&ab_channel=CodeResource">教學影片-17:37開始</a></h3><p>後來是在 文字盒子上也加上一個相對定位就成功了，我不太會用文字說明，用圖片來說好了：</p>
+<p><img src="https://i.imgur.com/lmUC9ya.png"></p>
+<p>我後來找一些定位的文章：</p>
+<p>找到了一句話　：　</p>
+<h3 id="z-index屬性設置了一個定位元素及其後代元素或flex項目的z-order。"><a href="#z-index屬性設置了一個定位元素及其後代元素或flex項目的z-order。" class="headerlink" title="z-index屬性設置了一個定位元素及其後代元素或flex項目的z-order。"></a>z-index屬性設置了一個定位元素及其後代元素或flex項目的z-order。</h3><p>我頓悟了。</p>
+<p>原來要在將有覆蓋到的 div 都要給予定位，才可以進行圖層排序，後來問題就解開了。</p>
+<hr>
+<h2 id="5-不會將網頁寫成響應式"><a href="#5-不會將網頁寫成響應式" class="headerlink" title="5. 不會將網頁寫成響應式"></a>5. 不會將網頁寫成響應式</h2><p>因為我沒有寫成響應式的經驗，一開始就是直接看直接切，因為不想影片寫一行我寫一行，這樣很像沒有在思考。</p>
+<p>但後來發現我都用　px　當單位在切版，到響應式會跑掉，所以後來就直接重作，並且跟著影片打程式碼，然後了解寫法背後的原因。</p>
+<p>我自認幾個響應式要注意的地方：</p>
+<ol>
+<li>單位要統一　例如：文字用rem</li>
+<li>寬高用百分比</li>
+<li>區塊可以用padding去撐高度</li>
+</ol>
+<p>這樣就比較好來製作響應式的網站</p>
+<p>那要怎麼製作呢？</p>
+<p>一開始要先在　head 中輸入　一個 viewprot <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device=width&quot;&gt;</code></p>
+<p>然後在 css 中輸入:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>:<span class="number">990px</span>)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這邊寫法就是指，在視窗在多少的時候會呈現的樣子是什麼，專案中我就針對 990px 與 768px 去做。</p>
+<p>其實切完後覺得沒那麼難，就是另外排版這樣，但前面如果沒有邏輯亂切，在這邊會很頭痛。</p>
+<p>ps.這邊切的時候，文字會有溢出的效果，使用　<code>flex-wrap</code> 來修正</p>
+<h3 id="flex-wrap介紹"><a href="#flex-wrap介紹" class="headerlink" title="flex-wrap介紹"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-wrap">flex-wrap介紹</a></h3><hr>
+<h2 id="6-第一次製作漢堡"><a href="#6-第一次製作漢堡" class="headerlink" title="6. 第一次製作漢堡"></a>6. 第一次製作漢堡</h2><p>這邊我先貼上我觀看的教學文章，然後在看著影片中一起做。</p>
+<h3 id="利用純-HTML-CSS-來一個好吃的手作漢堡"><a href="#利用純-HTML-CSS-來一個好吃的手作漢堡" class="headerlink" title="利用純 HTML / CSS 來一個好吃的手作漢堡"></a><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10203995">利用純 HTML / CSS 來一個好吃的手作漢堡</a></h3><p>方法:</p>
+<ol>
+<li>設定一個<code>input</code> tpye 為 <code>checkbox</code> id設定為 icon(開啟)所在的 <code>&lt;label&gt;</code></li>
+<li> 設定一個<code>input</code> tpye 為 <code>checkbox</code> id設定為 icon(關閉)所在的 <code>&lt;label&gt;</code></li>
+<li>然後在將 表格 往右邊-100%隱藏起來</li>
+<li>寫入  checked + 表格 div 然後寫數右邊為 0</li>
+</ol>
+<p>這裡是先寫入兩個checkbox，一個負責打開，一個關閉，然後寫入當 checkbox 被 checked  的時候，會發生的效果</p>
+<h3 id="教學影片21-00開始"><a href="#教學影片21-00開始" class="headerlink" title="教學影片21:00開始"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=41PsM6bLijI&t=1518s&ab_channel=CodeResource">教學影片21:00開始</a></h3><hr>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>因為很多東西對我來說還有點難度，所以我沒辦法很清楚的表達我腦中所得到的知識，往後有時間會再來整理。</p>
+<p>然後因為這專案用了很多別人做好的ｊｓ效果，就是套上去而已，覺得有點可惜沒學到，但我還是會把套用的方法寫在下方</p>
+<p>這次影片的老師很常使用　section 去包物件，可能這塊我還要去了解為什麼要這樣包</p>
+<h3 id="HTML5-新增的結構元素——能用不代表用對了"><a href="#HTML5-新增的結構元素——能用不代表用對了" class="headerlink" title="HTML5 新增的結構元素——能用不代表用對了"></a><a target="_blank" rel="noopener" href="https://www.itread01.com/articles/1478508926.html">HTML5 新增的結構元素——能用不代表用對了</a></h3><hr>
+<h2 id="套用效果"><a href="#套用效果" class="headerlink" title="套用效果"></a>套用效果</h2><ol>
+<li>圖片選擇後放大效果</li>
+</ol>
+<p>進入網站：</p>
+<h3 id="效果網站"><a href="#效果網站" class="headerlink" title="效果網站"></a><a target="_blank" rel="noopener" href="https://fancyapps.com/fancybox/3/">效果網站</a></h3><p>套用方法：</p>
+<h3 id="教學影片36-36"><a href="#教學影片36-36" class="headerlink" title="教學影片36:36"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=zWzI25FcWg8&t=1057s&ab_channel=CodeResource">教學影片36:36</a></h3><ol start="2">
+<li>圖片幻燈片效果</li>
+</ol>
+<p>進入網站：</p>
+<h3 id="效果網站-1"><a href="#效果網站-1" class="headerlink" title="效果網站"></a><a target="_blank" rel="noopener" href="https://kenwheeler.github.io/slick/">效果網站</a></h3><h3 id="到這邊複製js"><a href="#到這邊複製js" class="headerlink" title="到這邊複製js"></a><a target="_blank" rel="noopener" href="https://www.jsdelivr.com/package/npm/slick-carousel?path=slick">到這邊複製js</a></h3><p>套用方法：</p>
+<h3 id="教學影片00-50"><a href="#教學影片00-50" class="headerlink" title="教學影片00:50"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=DNj2hD4jjYE&t=1s&ab_channel=CodeResource">教學影片00:50</a></h3><p>套法有點複雜，我後來自己試出來 js 要這樣改:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;.slider-container&#x27;</span>).slick(&#123;</span><br><span class="line">    dots: <span class="literal">true</span>,</span><br><span class="line">    infinite: <span class="literal">true</span>,</span><br><span class="line">    speed: <span class="number">500</span>,</span><br><span class="line">    fade: <span class="literal">true</span>,</span><br><span class="line">    cssEase: <span class="string">&#x27;linear&#x27;</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>裡面的　<code>slider-container</code> 就是寫入你要有效果的　div</p>
+<p>－－－</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/22/CSS%20-%20%E5%88%87%E4%B8%80%E5%80%8B%E4%BA%A4%E9%8C%AF%E6%BC%82%E6%B5%AE%E7%89%88%20(%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88)/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-25 21:48:01
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/CSS-%E4%BD%9C%E5%93%81/" title="CSS 作品">
+                        <b>#</b> CSS 作品
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2020/12/26/%E5%8F%AF%E6%8E%A5%E6%94%B6%E8%A1%A8%E5%96%AE%E7%9A%84%E5%8A%9F%E8%83%BD%E7%B6%B2%E9%A0%81%20-%20CSS%20%E6%8E%92%E7%89%88%E7%B7%B4%E7%BF%92/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%80%8B%E4%BA%BA%E7%B6%B2%E9%A0%81-CSS-%E6%8E%92%E7%89%88%E7%B7%B4%E7%BF%92"><span class="toc-text">個人網頁 - CSS 排版練習</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E5%93%81"><span class="toc-text">作品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%83%E5%BE%97"><span class="toc-text">心得</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-flex-basis"><span class="toc-text">1. flex-basis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%96%E8%A7%A3-Flexbox-%E9%80%B2%E9%9A%8E%E5%B1%AC%E6%80%A7"><span class="toc-text">圖解 Flexbox 進階屬性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-gird%E7%94%A8%E6%B3%95"><span class="toc-text">2. gird用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-Grid-%E5%B1%AC%E6%80%A7%E4%BB%8B%E7%B4%B9"><span class="toc-text">CSS Grid 屬性介紹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Grid-margin-%E4%BE%86%E9%81%94%E5%88%B0%E5%9E%82%E7%9B%B4%E7%BD%AE%E4%B8%AD%E7%9B%AE%E7%9A%84"><span class="toc-text">使用 Grid + margin 來達到垂直置中目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-Grid-%E8%AA%9E%E6%B3%95%E7%AD%86%E8%A8%98"><span class="toc-text">CSS Grid 語法筆記</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-root-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-text">3. root 的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#root-%E6%A0%B9%E7%9B%AE%E9%8C%84%E9%81%B8%E5%8F%96%E5%99%A8-%E5%8F%AB%E4%BD%A0%E9%98%BF%E7%88%B8%E5%87%BA%E4%BE%86%E8%AC%9B"><span class="toc-text">:root 根目錄選取器 - 叫你阿爸出來講</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%81%B8%E5%96%AE%E9%81%B8%E5%8F%96%E5%BE%8C%EF%BC%8C%E5%AE%9A%E4%BD%8D%E8%88%87%E5%9C%96%E5%B1%A4%E7%9A%84%E8%A7%80%E5%BF%B5"><span class="toc-text">4. 選單選取後，定位與圖層的觀念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%99%E5%AD%B8%E5%BD%B1%E7%89%87-17-37%E9%96%8B%E5%A7%8B"><span class="toc-text">教學影片-17:37開始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index%E5%B1%AC%E6%80%A7%E8%A8%AD%E7%BD%AE%E4%BA%86%E4%B8%80%E5%80%8B%E5%AE%9A%E4%BD%8D%E5%85%83%E7%B4%A0%E5%8F%8A%E5%85%B6%E5%BE%8C%E4%BB%A3%E5%85%83%E7%B4%A0%E6%88%96flex%E9%A0%85%E7%9B%AE%E7%9A%84z-order%E3%80%82"><span class="toc-text">z-index屬性設置了一個定位元素及其後代元素或flex項目的z-order。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%8D%E6%9C%83%E5%B0%87%E7%B6%B2%E9%A0%81%E5%AF%AB%E6%88%90%E9%9F%BF%E6%87%89%E5%BC%8F"><span class="toc-text">5. 不會將網頁寫成響應式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-wrap%E4%BB%8B%E7%B4%B9"><span class="toc-text">flex-wrap介紹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%A3%BD%E4%BD%9C%E6%BC%A2%E5%A0%A1"><span class="toc-text">6. 第一次製作漢堡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E7%B4%94-HTML-CSS-%E4%BE%86%E4%B8%80%E5%80%8B%E5%A5%BD%E5%90%83%E7%9A%84%E6%89%8B%E4%BD%9C%E6%BC%A2%E5%A0%A1"><span class="toc-text">利用純 HTML &#x2F; CSS 來一個好吃的手作漢堡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%99%E5%AD%B8%E5%BD%B1%E7%89%8721-00%E9%96%8B%E5%A7%8B"><span class="toc-text">教學影片21:00開始</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%8C%E8%A8%98"><span class="toc-text">後記</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5-%E6%96%B0%E5%A2%9E%E7%9A%84%E7%B5%90%E6%A7%8B%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E8%83%BD%E7%94%A8%E4%B8%8D%E4%BB%A3%E8%A1%A8%E7%94%A8%E5%B0%8D%E4%BA%86"><span class="toc-text">HTML5 新增的結構元素——能用不代表用對了</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%97%E7%94%A8%E6%95%88%E6%9E%9C"><span class="toc-text">套用效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E7%B6%B2%E7%AB%99"><span class="toc-text">效果網站</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%99%E5%AD%B8%E5%BD%B1%E7%89%8736-36"><span class="toc-text">教學影片36:36</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E7%B6%B2%E7%AB%99-1"><span class="toc-text">效果網站</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B0%E9%80%99%E9%82%8A%E8%A4%87%E8%A3%BDjs"><span class="toc-text">到這邊複製js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%99%E5%AD%B8%E5%BD%B1%E7%89%8700-50"><span class="toc-text">教學影片00:50</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

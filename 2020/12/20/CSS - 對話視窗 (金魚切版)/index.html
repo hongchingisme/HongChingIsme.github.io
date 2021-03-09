@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      CSS - 對話視窗 (金魚切版) 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">CSS - 對話視窗 (金魚切版)</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/CSS%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92/" title="CSS切版練習">
+                    <b>#</b> CSS切版練習
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="CSS-對話視窗-金魚切版"><a href="#CSS-對話視窗-金魚切版" class="headerlink" title="CSS - 對話視窗 (金魚切版)"></a>CSS - 對話視窗 (金魚切版)</h1><h1 id="作品"><a href="#作品" class="headerlink" title="作品"></a><a target="_blank" rel="noopener" href="https://hongchingisme.github.io/porjects_04/">作品</a></h1><p><img src="https://i.imgur.com/pUkNFt7.png"></p>
+<h2 id="body"><a href="#body" class="headerlink" title="body"></a>body</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;user remote&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;userbox&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;pic&quot;&gt;</span><br><span class="line">                    &lt;img src&#x3D;&quot;img01.jpg&quot;&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;name&quot;&gt;丁丁&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">                拉拉你猜猜看我口袋裡面有幾顆蘋果？</span><br><span class="line">                </span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>先用一個 div 包住整個 box</li>
+<li>我們需要一個 div userbox 包住 照片、跟名字</li>
+<li>在 userbox 裡面再包一個訊息文字</li>
+</ol>
+<hr>
+<h2 id="CSS-上半部"><a href="#CSS-上半部" class="headerlink" title="CSS 上半部"></a>CSS 上半部</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">            <span class="attribute">align-items</span>: center;</span><br><span class="line">            <span class="attribute">display</span>: flex;</span><br><span class="line">            <span class="attribute">justify-content</span>: center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-class">.box</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">            <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">            <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span> cadetblue;</span><br><span class="line">            <span class="attribute">background-color</span>: white;</span><br><span class="line">            </span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-class">.local</span>&#123;</span><br><span class="line">            <span class="attribute">justify-content</span>: flex-end;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-class">.user</span> &#123;</span><br><span class="line">            <span class="attribute">display</span>: flex;</span><br><span class="line">            <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">            <span class="attribute">flex-shrink</span>: <span class="number">0</span>;</span><br><span class="line">            <span class="attribute">align-items</span>:flex-start ;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="selector-class">.userbox</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">            <span class="attribute">text-align</span>: center;</span><br><span class="line">            <span class="attribute">flex-shrink</span>: <span class="number">0</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-class">.userbox</span> <span class="selector-class">.pic</span>&#123;</span><br><span class="line">            <span class="attribute">border-radius</span>: <span class="number">100%</span>;</span><br><span class="line">            <span class="attribute">overflow</span>: hidden;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="selector-class">.userbox</span> <span class="selector-class">.pic</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">            <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>一開始先將 body 內置中，並且用 <code>justify-content</code> 將主軸調為中間</li>
+<li>調整 user 內的 排序 利用<code>flex-shrink</code>將縮放關閉，要不然圖片會被縮放變小</li>
+<li>在userbox 內設定好圖片與名字盒子的高度，也調整變置中</li>
+<li>放照片的盒子 pic 給一個圓角</li>
+<li>把 pic 內的 img 給設定為寬度100%去符合容易大小</li>
+<li>設定<code> vertical-align</code> 將圖片對齊盒子的置中位置</li>
+<li>這邊要在 pic 盒子內加入一個<code>overflow:hidden</code> 將凸出的部分給隱藏起來</li>
+</ol>
+<hr>
+<h2 id="CSS下半部"><a href="#CSS下半部" class="headerlink" title="CSS下半部"></a>CSS下半部</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.user</span> <span class="selector-class">.text</span>&#123;</span><br><span class="line">     </span><br><span class="line">     <span class="attribute">padding</span>:<span class="number">16px</span>;</span><br><span class="line">     <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">     <span class="attribute">position</span>: relative ;</span><br><span class="line">     </span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="selector-class">.remote</span> <span class="selector-class">.text</span>&#123;</span><br><span class="line">    <span class="attribute">margin-left</span>:<span class="number">20px</span> ;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">80px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: gray;</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="selector-class">.local</span> <span class="selector-class">.text</span>&#123;</span><br><span class="line">     </span><br><span class="line">     <span class="attribute">margin-right</span>: <span class="number">20px</span>;</span><br><span class="line">     <span class="attribute">margin-left</span>: <span class="number">80px</span>;</span><br><span class="line">     <span class="attribute">order</span>:-<span class="number">1</span>;</span><br><span class="line">     <span class="attribute">background-color</span>: mediumseagreen;</span><br><span class="line">     <span class="attribute">color</span>:white;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>設定文字訊息 Text 一個 padding 並給圓角，讓畫面優化</li>
+<li>在 remote 的 text 當中左右個要給 margin 因為這邊圖片盒子 pic 是60px 所以要將對話框跟圖片產生距離又不壓縮圖片，所以是要讓<code>margin-left:20</code> 左邊為 <code>margin-right:80px</code> </li>
+<li>local的 text部份一樣，但因為 local 的訊息框在右邊，所以要反過來 <code>order:-1</code> 調整 pic 與 text 的順序</li>
+</ol>
+<hr>
+<h2 id="繪出一個三角形"><a href="#繪出一個三角形" class="headerlink" title="繪出一個三角形"></a>繪出一個三角形</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.remote</span> <span class="selector-class">.text</span><span class="selector-pseudo">::before</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">10px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">10px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">10px</span> solid gray;</span><br><span class="line">    <span class="attribute">left</span>:-<span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.local</span> <span class="selector-class">.text</span><span class="selector-pseudo">::before</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">10px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">10px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-left</span>: <span class="number">10px</span> solid mediumseagreen;</span><br><span class="line">    <span class="attribute">right</span>:-<span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這邊要繪出一個三角形並定位在訊息框旁邊，那如何匯出三角形呢？</p>
+<ol>
+<li>設定一個偽元素在 text 前面，並且給他上下右各給邊框，然後將上下使用<code>transparent</code>隱藏，右邊則是顯示出來，接著使用left調整位置就可以了。</li>
+<li>而 local 是反過來的，所以為 <code>right:-10</code> </li>
+<li>最後要在 user 當中加入一個 <code>align-items:flex-start</code>   將版面貼上</li>
+</ol>
+<hr>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>這題就有一種切版的感覺出來了，就是一看到版面我大概就在想要怎麼切了，但當然跟老師教得有點差異，但畢竟切版的方法不是只有一種，所以有在持續進步就好。</p>
+<hr>
+<h2 id="參考文獻"><a href="#參考文獻" class="headerlink" title="參考文獻"></a>參考文獻</h2><p><a target="_blank" rel="noopener" href="https://www.wibibi.com/info.php?tid=CSS_vertical-align_%E5%B1%AC%E6%80%A7">CSS vertical-align 屬性</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align">vertical-align 有圖解的</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/ui-ux%E7%B7%B4%E5%8A%9F%E5%9D%8A/%E5%A6%82%E4%BD%95%E7%94%A8css%E7%B9%AA%E8%A3%BD%E4%B8%89%E8%A7%92%E5%BD%A2-71478539fb1b">如何用CSS繪製三角形</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/enjoy-life-enjoy-coding/css-%E6%89%80%E4%BB%A5%E6%88%91%E8%AA%AA%E9%82%A3%E5%80%8B%E7%89%88%E8%83%BD%E4%B8%8D%E8%83%BD%E5%A5%BD%E5%88%87%E4%B8%80%E9%BB%9E-flex-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-e68cc2906995">這篇下面有講到order用法</a></p>
+<hr>
+<h3 id="完整程式碼"><a href="#完整程式碼" class="headerlink" title="完整程式碼:"></a>完整程式碼:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D; , initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;對話紀錄視窗&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        *&#123;</span><br><span class="line">            padding: 0;</span><br><span class="line">            margin: 0;</span><br><span class="line">            list-style: none;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        html,body&#123;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        body&#123;</span><br><span class="line">            align-items: center;</span><br><span class="line">            display: flex;</span><br><span class="line">            justify-content: center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .box&#123;</span><br><span class="line">            width: 500px;</span><br><span class="line">            padding: 20px;</span><br><span class="line">            box-shadow: 0 0 10px cadetblue;</span><br><span class="line">            background-color: white;</span><br><span class="line">            </span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .local&#123;</span><br><span class="line">            justify-content: flex-end;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .user &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            margin-bottom: 20px;</span><br><span class="line">            flex-shrink: 0;</span><br><span class="line">            align-items:flex-start ;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        .userbox&#123;</span><br><span class="line">            width: 60px;</span><br><span class="line">            text-align: center;</span><br><span class="line">            flex-shrink: 0;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .userbox .pic&#123;</span><br><span class="line">            border-radius: 100%;</span><br><span class="line">            overflow: hidden;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        .userbox .pic img&#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            vertical-align: middle;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        .user .text&#123;</span><br><span class="line">            </span><br><span class="line">            padding:16px;</span><br><span class="line">            border-radius: 10px;</span><br><span class="line">            position: relative ;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .remote .text&#123;</span><br><span class="line">           margin-left:20px ;</span><br><span class="line">           margin-right: 80px;</span><br><span class="line">           background-color: gray;</span><br><span class="line">         </span><br><span class="line">           </span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .local .text&#123;</span><br><span class="line">            </span><br><span class="line">            margin-right: 20px;</span><br><span class="line">            margin-left: 80px;</span><br><span class="line">            order:-1;</span><br><span class="line">            background-color: mediumseagreen;</span><br><span class="line">            color:white;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .remote .text::before&#123;</span><br><span class="line">            content: &quot;&quot;;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top:10px;</span><br><span class="line">            border-top: 10px solid transparent;</span><br><span class="line">            border-bottom: 10px solid transparent;</span><br><span class="line">            border-right: 10px solid gray;</span><br><span class="line">            left:-10px;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        .local .text::before&#123;</span><br><span class="line">            content: &quot;&quot;;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top:10px;</span><br><span class="line">            border-top: 10px solid transparent;</span><br><span class="line">            border-bottom: 10px solid transparent;</span><br><span class="line">            border-left: 10px solid mediumseagreen;</span><br><span class="line">            right:-10px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .name &#123;</span><br><span class="line">            padding-top: 5px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;user remote&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;userbox&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;pic&quot;&gt;</span><br><span class="line">                    &lt;img src&#x3D;&quot;img01.jpg&quot;&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;name&quot;&gt;丁丁&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">                拉拉你猜猜看我口袋裡面有幾顆蘋果？</span><br><span class="line">                </span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;user local&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;userbox&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;pic&quot;&gt;</span><br><span class="line">                    &lt;img src&#x3D;&quot;img02.jpg&quot;&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;name&quot;&gt;拉拉&lt;&#x2F;div&gt;</span><br><span class="line">                </span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">                嗯?有獎品嗎?</span><br><span class="line">                </span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div class&#x3D;&quot;user remote&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;userbox&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;pic&quot;&gt;</span><br><span class="line">                    &lt;img src&#x3D;&quot;img01.jpg&quot;&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;name&quot;&gt;丁丁&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">                你猜對了我裡面的五顆都給你</span><br><span class="line">                </span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div class&#x3D;&quot;user local&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;userbox&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;pic&quot;&gt;</span><br><span class="line">                    &lt;img src&#x3D;&quot;img02.jpg&quot;&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;name&quot;&gt;拉拉&lt;&#x2F;div&gt;</span><br><span class="line">                </span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">                嗯......</span><br><span class="line">                </span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;user local&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;userbox&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;pic&quot;&gt;</span><br><span class="line">                    &lt;img src&#x3D;&quot;img02.jpg&quot;&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;name&quot;&gt;拉拉&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">                三顆！</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;  </span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/19/Font%20Awesome%20%E7%B6%B2%E7%AB%99%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%B8/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-20 19:48:13
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/CSS%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92/" title="CSS切版練習">
+                        <b>#</b> CSS切版練習
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2020/12/21/CSS%20-%20%E8%B6%85%E9%80%9A%E7%94%A8%E6%A9%AB%E5%BC%8F%E7%89%88%E9%9D%A2%20(%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88)/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS-%E5%B0%8D%E8%A9%B1%E8%A6%96%E7%AA%97-%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88"><span class="toc-text">CSS - 對話視窗 (金魚切版)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E5%93%81"><span class="toc-text">作品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#body"><span class="toc-text">body</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E4%B8%8A%E5%8D%8A%E9%83%A8"><span class="toc-text">CSS 上半部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E4%B8%8B%E5%8D%8A%E9%83%A8"><span class="toc-text">CSS下半部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B9%AA%E5%87%BA%E4%B8%80%E5%80%8B%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="toc-text">繪出一個三角形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%83%E5%BE%97"><span class="toc-text">心得</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E7%8D%BB"><span class="toc-text">參考文獻</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">完整程式碼:</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

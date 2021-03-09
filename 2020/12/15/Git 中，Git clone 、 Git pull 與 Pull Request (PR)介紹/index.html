@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      git 中，git clone 、 git pull 與 Pull Request (PR)介紹 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">git 中，git clone 、 git pull 與 Pull Request (PR)介紹</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/Git-%E5%9F%BA%E7%A4%8E/" title="Git 基礎">
+                    <b>#</b> Git 基礎
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="git-中，git-clone-、-git-pull-與-Pull-Request-PR-介紹"><a href="#git-中，git-clone-、-git-pull-與-Pull-Request-PR-介紹" class="headerlink" title="git 中，git clone 、 git pull 與 Pull Request (PR)介紹"></a>git 中，git clone 、 git pull 與 Pull Request (PR)介紹</h1><h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><p>在 git 當中，我們可以透過<code>git clone</code> 指令來達到將專案倉儲克隆一份，就好比把檔案給複製到自己的電腦當中，而克隆的方法也很簡單，以下的步驟會告訴你怎麼做：</p>
+<ol>
+<li>第一步，進入到想要克隆的專案中</li>
+</ol>
+<p><img src="https://i.imgur.com/BI8EY1v.png"></p>
+<ol start="2">
+<li>進入主畫面　code 當中，並點取右上角的：</li>
+</ol>
+<p><img src="https://i.imgur.com/bjz3MTA.png"></p>
+<ol start="3">
+<li><p>點入後會看見 Clone 的字樣，下面有顯示不同的克隆方法，這邊介紹使用 SSH 克隆的辦法，因為我已經與 github 綁定好了 ssh key ，可以直接透過 cmd 輸入指令來客隆</p>
+</li>
+<li><p>將 ssh 當中的指令複製下來，並開啟　cmd </p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/GZDwkl4.png"></p>
+<ol start="5">
+<li>在 cmd 當中輸入 <code>git clone + 複製好的指令</code></li>
+</ol>
+<p><img src="https://i.imgur.com/kDpXzvX.png"></p>
+<p>輸入後就會克隆成功了！</p>
+<p>:::info<br>在克隆之前一定要知道自己克隆在哪邊，克隆之後會直接為一個資料夾，名稱為專案的名字。<br>:::</p>
+<hr>
+<h2 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h2><p>當我們準備將新的檔案更新至本地端時，就會用到 <code>git pull</code> 指令，藉著 pull 命令，可以把遠端數據庫修改的內容合併到本地端數據庫。pull = fetch + merge」。</p>
+<p>而使用 git pull 會直接與本地的數據 merge 要特別注意。</p>
+<h2 id="Pull-Request-流程"><a href="#Pull-Request-流程" class="headerlink" title="Pull Request  流程"></a>Pull Request  流程</h2><p>當我們要與別人進行專案協作時，假如這個專案並不是我認識的朋友，而是一個路人，那要如何跟他在 github 合作呢?</p>
+<p>很簡單</p>
+<p>使用 Pull Request 就可以與他人合作。</p>
+<p>首先，我們透過 fork 將你感興趣的專案給複製一分到自己的 github 帳號當中。</p>
+<p><img src="https://i.imgur.com/jsFiPZd.png"></p>
+<p>接著就會看見專案出現在自己的帳號裡面。 (因手邊沒兩個帳號，所以參考別人的影片並截圖) 來源: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=pytolws6aiE&ab_channel=5xRuby%E4%BA%94%E5%80%8D%E7%B4%85%E5%AF%B6%E7%9F%B3%E5%B0%88%E6%A5%AD%E7%A8%8B%E5%BC%8F%E6%95%99%E8%82%B2%E6%A9%9F%E6%A7%8B">Git 怎麼跟其它開發者的互動呢? 使用 Pull Request｜為你自己學 Git-教學｜高見龍</a></p>
+<p><img src="https://i.imgur.com/rWuoi2a.png"></p>
+<p>下面顯示這個是來自誰的專案。</p>
+<p>接著，因為我們對於這個專案很有興趣，但覺得裡面缺少了一些功能，我們可以先自行寫入想要的功能之後，對原作者發出 Pull Request 的請求。</p>
+<p><img src="https://i.imgur.com/ho6L0BC.png"></p>
+<p>點擊下去之後可以告訴原作者說你新增了什麼功能，若原作者喜歡這個功能就會將你的 PR 給 合併(marge)進去他的專案當中。</p>
+<hr>
+<h2 id="為什麼需要透過-Pull-Request-來開發"><a href="#為什麼需要透過-Pull-Request-來開發" class="headerlink" title="為什麼需要透過 Pull Request 來開發?"></a>為什麼需要透過 Pull Request 來開發?</h2><p>因為在合作開發專案的時候，每個人負責的功能與部分會不同，當我們要同時對一個專案進行開發時，就要透過建立主要分支與其他分支來達成開發的效果。</p>
+<h3 id="主要分支"><a href="#主要分支" class="headerlink" title="主要分支"></a>主要分支</h3><p>為此專案主要使用的版本，當在其他分支中經過審核沒問題後，才會將他與主要分支進行合併，</p>
+<h3 id="其他分支"><a href="#其他分支" class="headerlink" title="其他分支"></a>其他分支</h3><p>一個專案當中，每個人被分派到的任務不一樣，所以我們可以先創立一個主要分支外的分支，將新增個功能與修改審查後合併在這個分支上，沒有問題的話，再與主要分支合併。</p>
+<p>因為每間公司對於 git 的合作方式並不一樣，所以還是要依照自己公司開發流程為主。</p>
+<p>換一種方式來說 PR :</p>
+<p>有一本書，這本書很特別，要求每個人都要在書中創造自己的故事，但故事的內容需要審查，不能腥羶色所以有一個主要在審查內容的管理者，而這個管理者的電腦當中有三個資料夾:</p>
+<ol>
+<li>確定出版的內容資料夾 (主要分支)</li>
+<li>二審的內容資料夾  (其他分支 - 全部的測試通過才可以進入主要分支，並當作主要分支的版本控制)</li>
+<li>初審的內容資料夾   (其他分支 - 基本功能測試OK就合併)</li>
+</ol>
+<p>每個作者寫完作品之後，都要先透過管理者的審查，初審時，管理者認為通過，就會放入第三個資料夾，二審時拿給總編輯長閱讀後通過才進入到第一個資料夾。</p>
+<p>而第三個資料夾是可以隨時修改的，方便讓初審就被駁回的作者可以重新在更改要求審查。</p>
+<p>我自己亂掰的故事，但自己看得懂就好 QQ</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/15/Git%20%E5%BB%BA%E7%AB%8B%E5%88%86%E6%94%AF%E3%80%81%E5%90%88%E4%BD%B5%E5%88%86%E6%94%AF%E3%80%81%E5%88%86%E6%94%AF%E6%AA%94%E6%A1%88%E8%A1%9D%E7%AA%81%E8%88%87%E3%80%80Git%20%E6%8C%87%E4%BB%A4%E5%BD%99%E6%95%B4%20%E8%88%87%20vim%20%E7%B7%A8%E8%BC%AF%E6%A8%A1%E5%BC%8F/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-15 20:50:54
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Git-%E5%9F%BA%E7%A4%8E/" title="Git 基礎">
+                        <b>#</b> Git 基礎
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2020/12/16/CSS%20-%20%E6%99%82%E9%96%93%E8%BB%B8%20(%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88)/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#git-%E4%B8%AD%EF%BC%8Cgit-clone-%E3%80%81-git-pull-%E8%88%87-Pull-Request-PR-%E4%BB%8B%E7%B4%B9"><span class="toc-text">git 中，git clone 、 git pull 與 Pull Request (PR)介紹</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-clone"><span class="toc-text">git clone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-pull"><span class="toc-text">git pull</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pull-Request-%E6%B5%81%E7%A8%8B"><span class="toc-text">Pull Request  流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E9%80%8F%E9%81%8E-Pull-Request-%E4%BE%86%E9%96%8B%E7%99%BC"><span class="toc-text">為什麼需要透過 Pull Request 來開發?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%88%86%E6%94%AF"><span class="toc-text">主要分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%88%86%E6%94%AF"><span class="toc-text">其他分支</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

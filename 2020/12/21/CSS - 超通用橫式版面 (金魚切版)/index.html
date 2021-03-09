@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      CSS - 超通用橫式版面 (金魚切版) 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">CSS - 超通用橫式版面 (金魚切版)</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/CSS%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92/" title="CSS切版練習">
+                    <b>#</b> CSS切版練習
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="CSS-超通用橫式版面-金魚切版"><a href="#CSS-超通用橫式版面-金魚切版" class="headerlink" title="CSS - 超通用橫式版面 (金魚切版)"></a>CSS - 超通用橫式版面 (金魚切版)</h1><h1 id="作品"><a href="#作品" class="headerlink" title="作品"></a><a target="_blank" rel="noopener" href="https://hongchingisme.github.io/project02/02-practice.html">作品</a></h1><p><img src="https://i.imgur.com/BSMTELN.png"></p>
+<h3 id="心得"><a href="#心得" class="headerlink" title="心得:"></a>心得:</h3><p>該實作並不困難，但老師用到的一些CSS語法有些我沒用過，因為之前用CSS排版都是用float去排，現在使用flex上多了很多用法，所以還在吸收。</p>
+<h3 id="語法分析"><a href="#語法分析" class="headerlink" title="語法分析:"></a>語法分析:</h3><ul>
+<li>align-self: flex-end:</li>
+</ul>
+<p>align-self的用法是作用在已經套用align-items的屬性。</p>
+<p>用法:</p>
+<ol>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>center</li>
+<li>stretch</li>
+<li>baseline</li>
+</ol>
+<p>因為很難用言語去表達他的排序方法，所以上圖片來解釋:</p>
+<p><img src="https://i.imgur.com/BMGHqka.png"></p>
+<p>實作語法分析</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">line-height</span>: <span class="number">2em</span>;</span><br><span class="line"><span class="attribute">border</span>: <span class="number">1px</span> solid teal;</span><br><span class="line"><span class="attribute">padding</span>: <span class="number">0</span> <span class="number">1em</span>;</span><br><span class="line"><span class="attribute">align-self</span>: flex-end;</span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">text-decoration</span>: none;</span><br><span class="line"><span class="attribute">margin-top</span>: auto;</span><br><span class="line"><span class="attribute">color</span>:seagreen;</span><br></pre></td></tr></table></figure>
+
+<p>這邊因為我們想把<code>more</code>標籤移動到右下角，所以使用這個排序方式。</p>
+<hr>
+<ul>
+<li>flex-direction: column:</li>
+</ul>
+<p>設定好的flex的排列方向改變，有四種排列方向:</p>
+<ol>
+<li>row：預設值，由左到右，從上到下</li>
+<li>row-reverse：與 row 相反</li>
+<li>column：從上到下，再由左到右</li>
+<li>column-reverse：與 column 相反</li>
+</ol>
+<p>實作語法分析:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.item</span> <span class="selector-class">.text</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line"><span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line"><span class="attribute">box-sizing</span>: border-box;</span><br><span class="line"><span class="attribute">display</span>: flex;</span><br><span class="line"><span class="attribute">flex-direction</span>: column;</span><br></pre></td></tr></table></figure>
+
+<p>實作上，因為我們的text這個class裡面有<code>h3</code> <code>p</code> <code>a</code> 元素，所以當我設定<code>display:flex</code>的時候，他會左到右的去排序(預設是row)，<br>但我這邊要的排序是從上到下，所以要使用<code>column</code>去把排序改變</p>
+<p><img src="https://i.imgur.com/qt5V2IM.png"></p>
+<hr>
+<ul>
+<li>object-fit: cover:</li>
+</ul>
+<p>object-fix 可以修正我們填入的內容物大小與位置。</p>
+<p>通常會跟object-position使用</p>
+<p>預設為 center center，通常會跟 object-fit 一起使用，定義物件所顯示的 x/y 位移。</p>
+<p>幾種用法:</p>
+<ol>
+<li>fill<br>預設值，預設會強制變形至 css 所定義的元素寬高，不管原檔比例。</li>
+<li>contain<br>增加或減少載入物件的寬度及高度(維持原比例)直到放得進所定義的元素寬高。</li>
+<li>cover<br>填滿元素的寬度及高度(維持原比例)，通常會剪掉部分的物件。<br>none<br>不做任何大小及比例調整。</li>
+<li>scale-down<br>將會選擇設為 none 或 container 兩者間較小的那個物件。</li>
+</ol>
+<p>實作用法分析:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">198px</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">198px</span>;</span><br><span class="line"><span class="attribute">object-fit</span>: cover;</span><br><span class="line"><span class="attribute">display</span>: flex;  </span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>因為這邊我們把圖片放進去之後，會發現圖片比例已經跑掉了，所以使用<code>cover</code>來填滿寬度跟高度並維持原比例。</p>
+<hr>
+<p><strong>參考文獻:</strong></p>
+<p><a target="_blank" rel="noopener" href="https://wcc723.github.io/css/2017/07/21/css-flex/">flex觀念文章</a><br><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201501/css-flexbox.html">flex觀念文章02</a><br><a target="_blank" rel="noopener" href="https://blog.camel2243.com/2017/01/21/css-object-fit-object-position-%E8%AA%BF%E6%95%B4%E7%BD%AE%E6%8F%9B%E5%85%83%E7%B4%A0img-%E7%AD%89%E7%9A%84%E5%85%A7%E5%AE%B9/">object-fit / object-position 調整置換元素(img..等)的內容</a></p>
+<hr>
+<h3 id="完整程式碼"><a href="#完整程式碼" class="headerlink" title="完整程式碼"></a>完整程式碼</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        *&#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">            list-style: none;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        body&#123;</span><br><span class="line">            background: linear-gradient(-20deg,#a8edea,#fed6e3);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .wrap&#123;</span><br><span class="line">       </span><br><span class="line">          height: 100vh;</span><br><span class="line">          display: flex; </span><br><span class="line">          align-items: center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .container&#123;</span><br><span class="line">            width: 1200px;</span><br><span class="line">            margin: 0 auto;</span><br><span class="line">            display: flex; </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .item&#123;</span><br><span class="line">            width: 368px;</span><br><span class="line">            height: 198px;</span><br><span class="line">            display: flex; </span><br><span class="line">            align-items: center;</span><br><span class="line">            margin: 0 15px;</span><br><span class="line">            border: 1px solid #a8edef;</span><br><span class="line">            box-shadow: 0 5px 30px rgba(127,255,212,.3);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .item .img img&#123;</span><br><span class="line">            width: 198px;</span><br><span class="line">            height: 198px;</span><br><span class="line">            object-fit: cover;</span><br><span class="line">            display: flex;  </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .item .text &#123;</span><br><span class="line">            width: 50%;</span><br><span class="line">            height: 200px;</span><br><span class="line">            padding: 10px;</span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">            display: flex;</span><br><span class="line">            flex-direction: column;</span><br><span class="line">            &#x2F;*justify-content: center;*&#x2F;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .item .text h3&#123;</span><br><span class="line"></span><br><span class="line">            font-size: 20px;</span><br><span class="line">            padding: 10px;</span><br><span class="line">        &#125;</span><br><span class="line">        .item .text p&#123;</span><br><span class="line">            font-size: 13px;</span><br><span class="line">            padding: 10px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .item .text .bt&#123;</span><br><span class="line">            </span><br><span class="line">            line-height: 2em;</span><br><span class="line">            border: 1px solid teal;</span><br><span class="line">            padding: 0 1em;</span><br><span class="line">            align-self: flex-end;</span><br><span class="line">            border-radius: 100px;</span><br><span class="line">            text-decoration: none;</span><br><span class="line">            margin-top: auto;</span><br><span class="line">            color:seagreen;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .item .text .bt:hover&#123;</span><br><span class="line">            background-color: aquamarine;</span><br><span class="line">            color:black;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;wrap&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;item&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;img&quot;&gt;&lt;img src&#x3D;&quot;img01.jfif&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">                    &lt;h3&gt;天氣之子&lt;&#x2F;h3&gt;</span><br><span class="line">                    &lt;p&gt;離家出的少年與擁有「改變天氣」的奇妙能力的少女！在氣候異常的時代，該如何「選擇」自己的生活？&lt;&#x2F;p&gt;</span><br><span class="line">                    &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;bt&quot;&gt;more&lt;&#x2F;a&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;item&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;img&quot;&gt;&lt;img src&#x3D;&quot;img02.jfif&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">                    &lt;h3&gt;你的名字&lt;&#x2F;h3&gt;</span><br><span class="line">                    &lt;p&gt;動畫電影《你的名字》講訴的是相隔遙遠的少男少女在夢中相見、相識、相戀的故事。&lt;&#x2F;p&gt;</span><br><span class="line">                    &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;bt&quot;&gt;more&lt;&#x2F;a&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;item&quot;&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;img&quot;&gt;&lt;img src&#x3D;&quot;img03.jfif&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">                &lt;div class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">                    &lt;h3&gt;秒速五公分&lt;&#x2F;h3&gt;</span><br><span class="line">                    &lt;p&gt;對於初戀的不捨，有人選擇繼續前進，也有人選擇原地踏步，可以再選一次的話，還能在櫻花樹下賞櫻嗎？&lt;&#x2F;p&gt;</span><br><span class="line">                    &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;bt&quot;&gt;more&lt;&#x2F;a&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/20/CSS%20-%20%E5%B0%8D%E8%A9%B1%E8%A6%96%E7%AA%97%20(%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88)/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-21 19:48:07
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/CSS%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92/" title="CSS切版練習">
+                        <b>#</b> CSS切版練習
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2020/12/21/CSS%20-%20%E5%81%B4%E9%82%8A%E9%81%B8%E5%96%AE%E6%80%8E%E9%BA%BC%E5%88%87%20(%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88)/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS-%E8%B6%85%E9%80%9A%E7%94%A8%E6%A9%AB%E5%BC%8F%E7%89%88%E9%9D%A2-%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88"><span class="toc-text">CSS - 超通用橫式版面 (金魚切版)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E5%93%81"><span class="toc-text">作品</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%83%E5%BE%97"><span class="toc-text">心得:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AA%9E%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-text">語法分析:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">完整程式碼</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

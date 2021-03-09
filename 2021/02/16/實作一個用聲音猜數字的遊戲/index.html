@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      實作一個用聲音猜數字的遊戲 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">實作一個用聲音猜數字的遊戲</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/Javascript-%E4%BD%9C%E5%93%81/" title="Javascript 作品">
+                    <b>#</b> Javascript 作品
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="實作一個用聲音猜數字的遊戲"><a href="#實作一個用聲音猜數字的遊戲" class="headerlink" title="實作一個用聲音猜數字的遊戲"></a>實作一個用聲音猜數字的遊戲</h1><h1 id="作品"><a href="#作品" class="headerlink" title="作品"></a><a target="_blank" rel="noopener" href="https://hongchingisme.github.io/My_projects/speak_number_guess/index.html">作品</a></h1><p><img src="https://i.imgur.com/mKUIsRi.png"></p>
+<h3 id="原始碼-有原始-JS-的-code"><a href="#原始碼-有原始-JS-的-code" class="headerlink" title="原始碼(有原始 JS 的 code)"></a><a target="_blank" rel="noopener" href="https://hackmd.io/@jIw4XCELQByqRnyHflOKKw/SywJCk2Zd">原始碼(有原始 JS 的 code)</a></h3><h2 id="本實作想實現的功能"><a href="#本實作想實現的功能" class="headerlink" title="本實作想實現的功能:"></a>本實作想實現的功能:</h2><ol>
+<li>抓取使用者的聲音轉成文字</li>
+<li>判斷是否為數字</li>
+<li>判斷數字是否超過範圍</li>
+<li>判斷是否符合隨機產生的數字</li>
+<li>循環語音辨識</li>
+</ol>
+<h2 id="實作內容"><a href="#實作內容" class="headerlink" title="實作內容"></a>實作內容</h2><h3 id="HTML-部分"><a href="#HTML-部分" class="headerlink" title="HTML 部分"></a>HTML 部分</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;img src&#x3D;&quot;img&#x2F;mic.png&quot; alt&#x3D;&quot;Speak&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;請猜數字 1 ~ 100&lt;&#x2F;h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;h3&gt;請對您的麥克風說出數字&lt;&#x2F;h3&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;msg&quot; id&#x3D;&quot;msg&quot;&gt;</span><br><span class="line">    &lt;div&gt;您的數字&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;span class&#x3D;&quot;box&quot;&gt;0&lt;&#x2F;span&gt;</span><br><span class="line">    &lt;div&gt;請開始&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>這次 HTML 部分不多，所以就直接貼上來。</p>
+<ol>
+<li>一開始先插入麥克風的圖片，之後輸入標題。</li>
+<li>寫入一個 <code>msg</code> 包住訊息</li>
+</ol>
+<ul>
+<li>成品:</li>
+</ul>
+<p><img src="https://i.imgur.com/kzdNORc.png"></p>
+<ul>
+<li>可以透過上方連結觀看詳細程式碼</li>
+</ul>
+<hr>
+<h3 id="CSS-部分"><a href="#CSS-部分" class="headerlink" title="CSS 部分"></a>CSS 部分</h3><p>CSS 部分沒有特別的地方，唯一要注意的就是在對 <code>span</code> 操作大小時要注意 inline 要改成 inline-block ，因為 span 是行內元素，要把它改成行內區塊元素。</p>
+<ul>
+<li>成品:</li>
+</ul>
+<p><img src="https://i.imgur.com/AixEPET.jpg"></p>
+<hr>
+<h2 id="Jquery-部分"><a href="#Jquery-部分" class="headerlink" title="Jquery 部分"></a>Jquery 部分</h2><h3 id="抓取-DOM-與產生亂數"><a href="#抓取-DOM-與產生亂數" class="headerlink" title="抓取 DOM 與產生亂數"></a>抓取 DOM 與產生亂數</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> msgEL = $(<span class="string">&#x27;#msg&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> randomNum = getRandomNuber();</span><br><span class="line"></span><br><span class="line"><span class="comment">//產生亂數</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomNuber</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">100</span>) +<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>抓取 DOM</li>
+<li>寫入亂數<code>Math.floor(Math.random()*100) +1</code>這邊+1是因為要讓亂數為99時或0時，變成100跟1</li>
+</ol>
+<ul>
+<li>可以透過上方連結觀看詳細程式碼</li>
+</ul>
+<h3 id="寫入語音辨識-API"><a href="#寫入語音辨識-API" class="headerlink" title="寫入語音辨識 API"></a>寫入語音辨識 API</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//設定語音辨識 api ，寫入 webkit 是為了相容性問題，有些瀏覽器不支援，所以要加入 webkit 讓他相容</span></span><br><span class="line"><span class="built_in">window</span>.SpeechRecognition = <span class="built_in">window</span>.SpeechRecognition || <span class="built_in">window</span>.webkitSpeechRecognition;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定義語音辨識，當他辨識後產生新的物件</span></span><br><span class="line"><span class="keyword">let</span> recognition = <span class="keyword">new</span> <span class="built_in">window</span>.SpeechRecognition();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 語音辨識 api 用法，讓瀏覽器判斷語音開始</span></span><br><span class="line">recognition.start();</span><br></pre></td></tr></table></figure>
+
+<p>JS 針對語音辨識有相對應的 API 但是在一些瀏覽器上會有不支援的問題。<br>(必須是在網路上或者自己架一個localhost才可以使用，一開始沒有架設localhost，會導致一直詢問是否可以使用麥克風)</p>
+<p><img src="https://i.imgur.com/zgh45p1.png"></p>
+<ol>
+<li>寫入 SpeechRecognition 語音辨識 API</li>
+<li>寫入 webkitSpeechRecognition 相容瀏覽器</li>
+<li>定義變數 <code>recognition</code> 為一個新的 語音辨識 (上兩部是要讓先讓瀏覽器抓取)</li>
+<li><code>recognition.start()</code> 讓語音辨識開始</li>
+</ol>
+<h3 id="寫入語音辨識監聽與返還語音判斷"><a href="#寫入語音辨識監聽與返還語音判斷" class="headerlink" title="寫入語音辨識監聽與返還語音判斷"></a>寫入語音辨識監聽與返還語音判斷</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//寫入事件監聽，要使用 result 才能返還語音辨識結果</span></span><br><span class="line">recognition.addEventListener(<span class="string">&#x27;result&#x27;</span> ,onSpeak);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 捕獲語音函式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onSpeak</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> msg = e.results[<span class="number">0</span>][<span class="number">0</span>].transcript;</span><br><span class="line">    writeMessage(msg);</span><br><span class="line">    checkNumber(msg);</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//將捕獲的語音數值寫入 DOM</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">writeMessage</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    msgEL.html(<span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;您的數字：&lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;span class=&quot;box&quot;&gt;<span class="subst">$&#123;msg&#125;</span>&lt;/span&gt;</span></span><br><span class="line"><span class="string">    `</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判斷捕獲的數字是否為數字，若不是就回傳錯誤訊息</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkNumber</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> num = +msg;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//確認是否為數字</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Number</span>.isNaN(num))&#123;</span><br><span class="line">        msgEL.append(<span class="string">&#x27;&lt;div&gt;這不是一個有效的數字&lt;/div&gt;&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//超出或太小給予提示</span></span><br><span class="line">    <span class="keyword">if</span>(num&gt;<span class="number">100</span> || num&lt;<span class="number">1</span>)&#123;</span><br><span class="line">        msgEL.append(<span class="string">&#x27;&lt;div&gt;數字在 1~100之間&lt;/div&gt;&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//答對輸出恭喜訊息，若還沒會提示數字高低</span></span><br><span class="line">    <span class="keyword">if</span>(num === randomNum)&#123;</span><br><span class="line">        $(<span class="built_in">window</span>.document.body).html( <span class="string">`</span></span><br><span class="line"><span class="string">        &lt;h2&gt;恭喜您，正確的數字就是<span class="subst">$&#123;num&#125;</span>&lt;/h2&gt;</span></span><br><span class="line"><span class="string">        &lt;button class=&quot;play-again&quot; id=&quot;play-again&quot;&gt;Play Again&lt;/button&gt;</span></span><br><span class="line"><span class="string">        `</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num &gt;randomNum)&#123;</span><br><span class="line">        msgEL.append(<span class="string">&#x27;&lt;div&gt;再低一點！&lt;/div&gt;&#x27;</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        msgEL.append(<span class="string">&#x27;&lt;div&gt;再高一點！&lt;/div&gt;&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>寫入事件監聽事件，要使用 <code>result</code> 才會返還語音辨識的結果</li>
+<li>抓取語音辨識的位置與值 <code> e.results[0][0].transcript;</code></li>
+</ol>
+<p>  <img src="https://i.imgur.com/8QwVrvR.png"><br>可以看見語音辨識的位置在返還值裡面的 results 陣列中的陣列裡面，所以才要寫入 [0][0]</p>
+<ol start="3">
+<li>寫入函式<code>writeMessage(msg);</code>將辨識的訊息寫進 DOM</li>
+<li>寫入函式 <code>checkNumber(msg)</code></li>
+</ol>
+<h4 id="checkNumber-msg-函式："><a href="#checkNumber-msg-函式：" class="headerlink" title="checkNumber(msg)函式："></a>checkNumber(msg)函式：</h4><ol>
+<li><p>先定義變數 <code>num</code> 為 +<code>msg</code> 這裡的 + 是要讓他為數字</p>
+</li>
+<li><p>寫入 if 並且寫入 Number.isNaN(),判斷是否為數字，若不是數字就會為 true 就會顯示訊息<img src="https://i.imgur.com/xfbEkfb.png"></p>
+</li>
+<li><p>接著寫入判斷數字是否超過範圍的 if<br><img src="https://i.imgur.com/jJ8TdCK.png"></p>
+</li>
+<li><p>寫入 if 判斷如果等於隨機產生的亂數時，顯示訊息</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/V0VyLgg.png"></p>
+<ol>
+<li>寫入指引 if ，引導玩家可以更接近答案</li>
+</ol>
+<p><img src="https://i.imgur.com/sTqA3Xz.png"></p>
+<h3 id="事件結束與循環"><a href="#事件結束與循環" class="headerlink" title="事件結束與循環"></a>事件結束與循環</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//寫入事件結束事件，當結束的時候，我們執行函式，讓語音辨識重啟</span></span><br><span class="line">recognition.addEventListener(<span class="string">&#x27;end&#x27;</span> , <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    recognition.start();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="built_in">document</span>.body).on(<span class="string">&#x27;click&#x27;</span> , <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(e.target.id == <span class="string">&quot;play-again&quot;</span>)&#123;</span><br><span class="line">        <span class="built_in">window</span>.location.reload()</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>寫入監聽事件 <code>end</code> 並且當觸發函式，該函式為讓語音辨識啟動，達到循環</li>
+<li>寫入獲勝時的按鈕功能，讓頁面重新整理重新啟動遊戲</li>
+</ol>
+<ul>
+<li>可以透過上方連結觀看詳細程式碼</li>
+</ul>
+<hr>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10208189">JS30 - 21 - Native Speech Recognition</a></p>
+<p><a target="_blank" rel="noopener" href="https://yakimhsu.com/project/project_w3_Javasciprt_NaN.html">JavaScript - 把你對 isNaN 的不滿都說出來</a></p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/02/14/%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E6%89%93%E5%AD%97%E9%81%8A%E6%88%B2/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-02-16 21:48:01
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Javascript-%E4%BD%9C%E5%93%81/" title="Javascript 作品">
+                        <b>#</b> Javascript 作品
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/02/20/%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E6%96%B0%E5%B9%B4%E5%80%92%E6%95%B8%E8%A8%88%E6%99%82%E5%99%A8/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E7%94%A8%E8%81%B2%E9%9F%B3%E7%8C%9C%E6%95%B8%E5%AD%97%E7%9A%84%E9%81%8A%E6%88%B2"><span class="toc-text">實作一個用聲音猜數字的遊戲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E5%93%81"><span class="toc-text">作品</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%A2%BC-%E6%9C%89%E5%8E%9F%E5%A7%8B-JS-%E7%9A%84-code"><span class="toc-text">原始碼(有原始 JS 的 code)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%AF%A6%E4%BD%9C%E6%83%B3%E5%AF%A6%E7%8F%BE%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">本實作想實現的功能:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E5%85%A7%E5%AE%B9"><span class="toc-text">實作內容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-%E9%83%A8%E5%88%86"><span class="toc-text">HTML 部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E9%83%A8%E5%88%86"><span class="toc-text">CSS 部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jquery-%E9%83%A8%E5%88%86"><span class="toc-text">Jquery 部分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%93%E5%8F%96-DOM-%E8%88%87%E7%94%A2%E7%94%9F%E4%BA%82%E6%95%B8"><span class="toc-text">抓取 DOM 與產生亂數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5%E8%AA%9E%E9%9F%B3%E8%BE%A8%E8%AD%98-API"><span class="toc-text">寫入語音辨識 API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5%E8%AA%9E%E9%9F%B3%E8%BE%A8%E8%AD%98%E7%9B%A3%E8%81%BD%E8%88%87%E8%BF%94%E9%82%84%E8%AA%9E%E9%9F%B3%E5%88%A4%E6%96%B7"><span class="toc-text">寫入語音辨識監聽與返還語音判斷</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#checkNumber-msg-%E5%87%BD%E5%BC%8F%EF%BC%9A"><span class="toc-text">checkNumber(msg)函式：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%B5%90%E6%9D%9F%E8%88%87%E5%BE%AA%E7%92%B0"><span class="toc-text">事件結束與循環</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

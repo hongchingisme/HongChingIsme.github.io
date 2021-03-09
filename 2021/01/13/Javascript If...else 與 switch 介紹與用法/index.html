@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Javascript if…else與switch的基本介紹與使用方式介紹 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Javascript if…else與switch的基本介紹與使用方式介紹</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/Javascript-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" title="Javascript 學習筆記">
+                    <b>#</b> Javascript 學習筆記
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="if…else與switch的基本介紹與使用方式介紹"><a href="#if…else與switch的基本介紹與使用方式介紹" class="headerlink" title="if…else與switch的基本介紹與使用方式介紹"></a>if…else與switch的基本介紹與使用方式介紹</h1><h2 id="if…else"><a href="#if…else" class="headerlink" title="if…else"></a>if…else</h2><h2 id="if的基本寫法"><a href="#if的基本寫法" class="headerlink" title="if的基本寫法"></a>if的基本寫法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">alert(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>當 if 裡面的結果為 ture 時，警告視窗跳出字串 “Hello”</p>
+<p>if(false){<br>alert(“Hello”)<br>}</p>
+<p>當 if 裡面的結果為 false 時則就不會跳出警告視窗</p>
+<hr>
+<h2 id="如果與否則的if寫法"><a href="#如果與否則的if寫法" class="headerlink" title="如果與否則的if寫法"></a>如果與否則的if寫法</h2><p>if(5&gt;3){<br>alert(“yes”);<br>}else{<br>alert(“no”)<br>}</p>
+<p>如果 5&gt;3 的話，警告視窗跳出 “yes” 若不是則跳出 “no” </p>
+<p>範例:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a =<span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> b =<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(a == b)&#123;</span><br><span class="line">alert(<span class="literal">true</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">alert(<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>結果跳出為:false</p>
+<p><img src="https://i.imgur.com/iQp3zv5.png"></p>
+<h3 id="寫法解釋"><a href="#寫法解釋" class="headerlink" title="寫法解釋:"></a>寫法解釋:</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a =<span class="number">5</span>; <span class="comment">//定義變量a值為5</span></span><br><span class="line"><span class="keyword">var</span> b =<span class="number">7</span>; <span class="comment">//定義變量b值為7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(a == b)&#123;  <span class="comment">//如果a等於b</span></span><br><span class="line">alert(<span class="literal">true</span>); <span class="comment">//跳出true</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;       <span class="comment">//如果不是</span></span><br><span class="line">alert(<span class="literal">false</span>);<span class="comment">//跳出false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h2 id="多判斷的if寫法"><a href="#多判斷的if寫法" class="headerlink" title="多判斷的if寫法"></a>多判斷的if寫法</h2><p>當我們寫 if 時，可以寫入多個判斷式更精準找到要的結果，例如以下寫法：</p>
+<ul>
+<li>範例一</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = prompt(<span class="string">&quot;請輸入數字&quot;</span> , <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(n&gt;<span class="number">500</span>)&#123;</span><br><span class="line">alert(n+<span class="string">&quot;&gt;500&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (n&gt;<span class="number">300</span>)&#123;</span><br><span class="line">alert(n<span class="string">&quot;&gt;300&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">alert(n+<span class="string">&quot;&lt;=300&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ol>
+<li>先定義變數 n 為 prompt (“請輸入數字” , “”) 讓使用者能夠輸入他們想要的數字</li>
+<li>寫入 if </li>
+<li>如果 輸入的 n &gt; 500 則跳出警告視窗 n + “&gt;500” 字串</li>
+<li>如果不是 如果 n &gt;300 則跳出警告視窗 n + “&gt;300” 字串</li>
+<li>都不是的話則跳出警告視窗 n + “&lt;=300” 字串</li>
+</ol>
+<ul>
+<li>範例二</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n1 = prompt(<span class="string">&quot;請輸入數字&quot;</span> , <span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> n2 = prompt(<span class="string">&quot;請輸入數字&quot;</span> , <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> op = prompt(<span class="string">&quot;請輸入運算: + , - , * , /&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> result;</span><br><span class="line"><span class="keyword">if</span>(op==<span class="string">&quot;+&quot;</span>)&#123;</span><br><span class="line">    result=n1 + n2;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (op==<span class="string">&quot;-&quot;</span>)&#123;</span><br><span class="line">    result=n1 - n2;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (op==<span class="string">&quot;*&quot;</span>)&#123;</span><br><span class="line">    result=n1 * n2;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (op==<span class="string">&quot;/&quot;</span>)&#123;</span><br><span class="line">    result=n1 / n2;</span><br><span class="line">&#125;</span><br><span class="line">alert (result);</span><br></pre></td></tr></table></figure>
+
+<p>這是一個讓使用者輸入數字與加減乘除的小互動，但透過 + 的符號會發現他是把兩個 srting 字串加起來，並不是把number 加起來，這是因為在 prompt 當中輸入數字後，他是以字串的方式呈現，我們必須將他變更數據類型為number，所以可以輸入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n1=<span class="built_in">Number</span>(n1);</span><br><span class="line">n1=<span class="built_in">Number</span>(n2);</span><br></pre></td></tr></table></figure>
+<p>就可以順利的讓兩數相加</p>
+<hr>
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><p>switch可以替代多個if來判斷，switch語句為多種分支的情況下提供了更具描述性的方式</p>
+<p>例如:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span>(a)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        alert(<span class="string">&quot;我是答案&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        alert(<span class="string">&quot;我不是答案&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">        alert(<span class="string">&quot;我不是答案&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">        alert(<span class="string">&quot;我不是答案&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">        alert(<span class="string">&quot;我不是答案&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>執行後為:</p>
+<p><img src="https://i.imgur.com/70JtqzJ.png"></p>
+<h3 id="寫法解釋-1"><a href="#寫法解釋-1" class="headerlink" title="寫法解釋"></a>寫法解釋</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>; <span class="comment">//定義變量a值為1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span>(a)&#123;  <span class="comment">//寫入switch</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:   <span class="comment">//如果值為1 就跳出 &quot;我是答案&quot;</span></span><br><span class="line">        alert(<span class="string">&quot;我是答案&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>; <span class="comment">//因為1為匹配，所以進行break停止，若這邊沒有break，就會往下一直執行下一個case直到有break為止</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        alert(<span class="string">&quot;我不是答案&quot;</span>);<span class="comment">//如果值為2 就跳出 &quot;我不是答案&quot;</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">        alert(<span class="string">&quot;我不是答案&quot;</span>);<span class="comment">//如果值為3 就跳出 &quot;我不是答案&quot;</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">        alert(<span class="string">&quot;我不是答案&quot;</span>);<span class="comment">//如果值為3 就跳出 &quot;我不是答案&quot;</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">        alert(<span class="string">&quot;我不是答案&quot;</span>);<span class="comment">//如果值為4 就跳出 &quot;我不是答案&quot;</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>也就是說，switch可以同時幫助我們匹配到我們要的答案，也就是在多個if中選擇我們要的路線。</p>
+<h3 id="case-分組"><a href="#case-分組" class="headerlink" title="case = 分組"></a>case = 分組</h3><p>case後面接著的值就是將它分好一組，例如:</p>
+<p>case 100: 就是將100分在這個case裡面</p>
+<h3 id="break-停止"><a href="#break-停止" class="headerlink" title="break = 停止"></a>break = 停止</h3><p>當匹配到合適的路線後，如果這邊沒有break，就會往下一直執行下一個case直到有break為止，所以一定要加入break！</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/01/10/Javascript%20%E4%B8%89%E7%A8%AE%E5%BE%AA%E7%92%B0%E8%88%87%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-01-13 21:48:01
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Javascript-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" title="Javascript 學習筆記">
+                        <b>#</b> Javascript 學習筆記
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/01/15/Javascript%20%E5%87%BD%E5%BC%8F/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#if%E2%80%A6else%E8%88%87switch%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9%E8%88%87%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E4%BB%8B%E7%B4%B9"><span class="toc-text">if…else與switch的基本介紹與使用方式介紹</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#if%E2%80%A6else"><span class="toc-text">if…else</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AF%AB%E6%B3%95"><span class="toc-text">if的基本寫法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E8%88%87%E5%90%A6%E5%89%87%E7%9A%84if%E5%AF%AB%E6%B3%95"><span class="toc-text">如果與否則的if寫法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%AB%E6%B3%95%E8%A7%A3%E9%87%8B"><span class="toc-text">寫法解釋:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%88%A4%E6%96%B7%E7%9A%84if%E5%AF%AB%E6%B3%95"><span class="toc-text">多判斷的if寫法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch"><span class="toc-text">switch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%AB%E6%B3%95%E8%A7%A3%E9%87%8B-1"><span class="toc-text">寫法解釋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#case-%E5%88%86%E7%B5%84"><span class="toc-text">case &#x3D; 分組</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#break-%E5%81%9C%E6%AD%A2"><span class="toc-text">break &#x3D; 停止</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

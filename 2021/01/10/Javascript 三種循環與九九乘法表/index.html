@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Javascript 三種循環與九九乘法表 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Javascript 三種循環與九九乘法表</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/Javascript-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" title="Javascript 學習筆記">
+                    <b>#</b> Javascript 學習筆記
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="do-while-、while、for-三種循環的基本介紹與99乘法表練習"><a href="#do-while-、while、for-三種循環的基本介紹與99乘法表練習" class="headerlink" title="do-while 、while、for 三種循環的基本介紹與99乘法表練習"></a>do-while 、while、for 三種循環的基本介紹與99乘法表練習</h1><h2 id="do-while循環基本寫法"><a href="#do-while循環基本寫法" class="headerlink" title="do-while循環基本寫法"></a>do-while循環基本寫法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    <span class="comment">//循環體</span></span><br><span class="line">&#125;<span class="keyword">while</span>(條件)</span><br><span class="line"></span><br><span class="line"><span class="comment">//符合條件的話，即執行循環體</span></span><br><span class="line"><span class="comment">//不符合條，就跳出循環</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>實際練習:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(i);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">&quot;&lt;br/&gt;&quot;</span>)</span><br><span class="line"></span><br><span class="line">i++;</span><br><span class="line">&#125;<span class="keyword">while</span>(i&lt;=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//解釋:</span></span><br><span class="line"><span class="comment">//定義 i =1</span></span><br><span class="line"><span class="comment">//開始循環 → 寫入i → 寫入&lt;/br&gt; → 自增 → 如果循環&lt;=10的話再一次循環</span></span><br><span class="line"><span class="comment">// 注意!一定要寫入自增i++要不然不會增加值。</span></span><br></pre></td></tr></table></figure>
+
+<p>結果:<br>(到10就會停止循環)<br><img src="https://i.imgur.com/R6rpgGY.png"></p>
+<hr>
+<h2 id="while循環基本寫法"><a href="#while循環基本寫法" class="headerlink" title="while循環基本寫法"></a>while循環基本寫法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">while</span>(條件)&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//循環體</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>實際練習:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(i&lt;=<span class="number">10</span>)&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(i);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">i++;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>結果也是一樣:</p>
+<p><img src="https://i.imgur.com/phpPef2.png"></p>
+<h2 id="do-while與while之間的差別"><a href="#do-while與while之間的差別" class="headerlink" title="do-while與while之間的差別"></a>do-while與while之間的差別</h2><p>我們先將兩種寫法寫在一起會比較清楚:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(i);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">&quot;&lt;br/&gt;&quot;</span>)</span><br><span class="line"></span><br><span class="line">i++;</span><br><span class="line">&#125;<span class="keyword">while</span>(i&lt;=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(i&lt;=<span class="number">10</span>)&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.write(i);</span><br><span class="line"><span class="built_in">document</span>.write(<span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">i++;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我們從最上面開始閱讀。</p>
+<p>do-while的執行是:</p>
+<p>1.寫入i<br>2.寫入br/<br>3.自增<br>4.判斷是否while<br>5.循環</p>
+<p>while的執行是:</p>
+<p>1.判斷是否while<br>2.循環<br>3.寫入i<br>4.寫入br/<br>5.自增</p>
+<p>也就是說:</p>
+<h3 id="do-while會先寫入才會判斷條件是否進行循環-也就說不管怎樣都會循環一次"><a href="#do-while會先寫入才會判斷條件是否進行循環-也就說不管怎樣都會循環一次" class="headerlink" title="do-while會先寫入才會判斷條件是否進行循環 (也就說不管怎樣都會循環一次)"></a>do-while會先寫入才會判斷條件是否進行循環 (也就說不管怎樣都會循環一次)</h3><h3 id="while為判斷條件是否進行循環才會寫入"><a href="#while為判斷條件是否進行循環才會寫入" class="headerlink" title="while為判斷條件是否進行循環才會寫入"></a>while為判斷條件是否進行循環才會寫入</h3><hr>
+<h2 id="for循環基本寫法"><a href="#for循環基本寫法" class="headerlink" title="for循環基本寫法"></a>for循環基本寫法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (初始值;條件;改變)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>實際練習:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">   <span class="built_in">document</span>.write(i);</span><br><span class="line">   <span class="built_in">document</span>.write(<span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>結果也是一樣:</p>
+<p><img src="https://i.imgur.com/phpPef2.png"></p>
+<p>而for的判斷順序也不太一樣，它的判斷順序為:</p>
+<p>1.var i =1<br>2.先判斷 i&lt;=10 ? 是否小於等於10<br>3.執行循環<br>4.自增<br>5.接著i = 2<br>6.繼續判斷 與循環</p>
+<h3 id="範例二-從十到一"><a href="#範例二-從十到一" class="headerlink" title="範例二 : 從十到一"></a>範例二 : 從十到一</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>( i=<span class="number">10</span> ; i&gt;<span class="number">0</span> ; i--)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;第&quot;</span>+i+<span class="string">&quot;隻綿羊&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/M5TRUra.png"></p>
+<h3 id="範例三-break-設定停止點"><a href="#範例三-break-設定停止點" class="headerlink" title="範例三 : break 設定停止點"></a>範例三 : break 設定停止點</h3><p>我們可以利用 break 讓 for 循環提早結束，例如 :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span> ; i&lt;=<span class="number">100</span>; i++)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;第&quot;</span>+i+<span class="string">&quot;隻綿羊&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( i === <span class="number">31</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;睡著了&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/mZG2Zvv.png"></p>
+<p>我們將循環當中建立一個 if 條件，當 i 全等於 31 時候，就會休息。</p>
+<h3 id="範例四-跳著數綿羊"><a href="#範例四-跳著數綿羊" class="headerlink" title="範例四 : 跳著數綿羊"></a>範例四 : 跳著數綿羊</h3><p>利用 % 取餘數達成效果，例如:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( i=<span class="number">1</span> ; i&lt;<span class="number">10</span> ; i++)&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(i%<span class="number">2</span>===<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;第&quot;</span>+i+<span class="string">&quot;隻綿羊&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在循環中寫入 if ，當 i 除 2 的時候 全等為1的時候輸出，就可以得到我們只要奇數的效果。</p>
+<p><img src="https://i.imgur.com/f1PNCA0.png"></p>
+<h3 id="範例五-跳過並且繼續數綿羊-continue"><a href="#範例五-跳過並且繼續數綿羊-continue" class="headerlink" title="範例五 : 跳過並且繼續數綿羊 continue"></a>範例五 : 跳過並且繼續數綿羊 continue</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( i=<span class="number">1</span> ; i&lt;<span class="number">10</span> ; i++)&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(i===<span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;第&quot;</span>+i+<span class="string">&quot;隻綿羊&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>當我們在循環當中想要跳過某一個特定的流程，可以用 continue 去跳過並且讓循環繼續</p>
+<hr>
+<h2 id="99乘法的練習"><a href="#99乘法的練習" class="headerlink" title="99乘法的練習"></a>99乘法的練習</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( i=<span class="number">1</span> ; i&lt;<span class="number">10</span> ; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>( j=<span class="number">1</span>;j&lt;<span class="number">10</span>; j++)&#123;</span><br><span class="line">        <span class="keyword">let</span> result = i * j ;</span><br><span class="line">        <span class="keyword">let</span> str =  i + <span class="string">&quot;x&quot;</span> + j + <span class="string">&quot;=&quot;</span> + result;</span><br><span class="line">        <span class="built_in">console</span>.log( str )</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我們要寫入一兩個迴圈，第一個迴圈為被乘數，第二個迴圈圍乘數。</p>
+<p>當被乘數 i 為 1 的時候，因為小於 10 所以開啟迴圈，第一圈進行一次乘數的迴圈也就是 1~9</p>
+<p>並且我們定義 result 為 i 乘上 j </p>
+<p>接著我們定義 srting 字串 為 i + “x” + j + “=” + result </p>
+<p>接著寫入 str </p>
+<p>就可以看到下面結果:</p>
+<p><img src="https://i.imgur.com/JeyLNhb.png"></p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/01/07/Javascript%20-%20%E7%89%A9%E4%BB%B6%E8%88%87%E9%99%A3%E5%88%97/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-01-10 21:48:01
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Javascript-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" title="Javascript 學習筆記">
+                        <b>#</b> Javascript 學習筆記
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/01/13/Javascript%20If...else%20%E8%88%87%20switch%20%E4%BB%8B%E7%B4%B9%E8%88%87%E7%94%A8%E6%B3%95/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#do-while-%E3%80%81while%E3%80%81for-%E4%B8%89%E7%A8%AE%E5%BE%AA%E7%92%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9%E8%88%8799%E4%B9%98%E6%B3%95%E8%A1%A8%E7%B7%B4%E7%BF%92"><span class="toc-text">do-while 、while、for 三種循環的基本介紹與99乘法表練習</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#do-while%E5%BE%AA%E7%92%B0%E5%9F%BA%E6%9C%AC%E5%AF%AB%E6%B3%95"><span class="toc-text">do-while循環基本寫法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#while%E5%BE%AA%E7%92%B0%E5%9F%BA%E6%9C%AC%E5%AF%AB%E6%B3%95"><span class="toc-text">while循環基本寫法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#do-while%E8%88%87while%E4%B9%8B%E9%96%93%E7%9A%84%E5%B7%AE%E5%88%A5"><span class="toc-text">do-while與while之間的差別</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#do-while%E6%9C%83%E5%85%88%E5%AF%AB%E5%85%A5%E6%89%8D%E6%9C%83%E5%88%A4%E6%96%B7%E6%A2%9D%E4%BB%B6%E6%98%AF%E5%90%A6%E9%80%B2%E8%A1%8C%E5%BE%AA%E7%92%B0-%E4%B9%9F%E5%B0%B1%E8%AA%AA%E4%B8%8D%E7%AE%A1%E6%80%8E%E6%A8%A3%E9%83%BD%E6%9C%83%E5%BE%AA%E7%92%B0%E4%B8%80%E6%AC%A1"><span class="toc-text">do-while會先寫入才會判斷條件是否進行循環 (也就說不管怎樣都會循環一次)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while%E7%82%BA%E5%88%A4%E6%96%B7%E6%A2%9D%E4%BB%B6%E6%98%AF%E5%90%A6%E9%80%B2%E8%A1%8C%E5%BE%AA%E7%92%B0%E6%89%8D%E6%9C%83%E5%AF%AB%E5%85%A5"><span class="toc-text">while為判斷條件是否進行循環才會寫入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for%E5%BE%AA%E7%92%B0%E5%9F%BA%E6%9C%AC%E5%AF%AB%E6%B3%95"><span class="toc-text">for循環基本寫法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E4%BA%8C-%E5%BE%9E%E5%8D%81%E5%88%B0%E4%B8%80"><span class="toc-text">範例二 : 從十到一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E4%B8%89-break-%E8%A8%AD%E5%AE%9A%E5%81%9C%E6%AD%A2%E9%BB%9E"><span class="toc-text">範例三 : break 設定停止點</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E5%9B%9B-%E8%B7%B3%E8%91%97%E6%95%B8%E7%B6%BF%E7%BE%8A"><span class="toc-text">範例四 : 跳著數綿羊</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E4%BA%94-%E8%B7%B3%E9%81%8E%E4%B8%A6%E4%B8%94%E7%B9%BC%E7%BA%8C%E6%95%B8%E7%B6%BF%E7%BE%8A-continue"><span class="toc-text">範例五 : 跳過並且繼續數綿羊 continue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#99%E4%B9%98%E6%B3%95%E7%9A%84%E7%B7%B4%E7%BF%92"><span class="toc-text">99乘法的練習</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

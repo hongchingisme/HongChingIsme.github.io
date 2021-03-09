@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      CSS - 側邊選單怎麼切 (金魚切版) 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">CSS - 側邊選單怎麼切 (金魚切版)</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/CSS%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92/" title="CSS切版練習">
+                    <b>#</b> CSS切版練習
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="CSS-側邊選單怎麼切-金魚切版"><a href="#CSS-側邊選單怎麼切-金魚切版" class="headerlink" title="CSS - 側邊選單怎麼切 (金魚切版)"></a>CSS - 側邊選單怎麼切 (金魚切版)</h1><h1 id="作品"><a href="#作品" class="headerlink" title="作品"></a><a target="_blank" rel="noopener" href="https://hongchingisme.github.io/CSS_projects03/index.html">作品</a></h1><p><img src="https://i.imgur.com/nWm8w3J.png"></p>
+<hr>
+<h2 id="body部分講解"><a href="#body部分講解" class="headerlink" title="body部分講解"></a>body部分講解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;menu&quot;&gt;</span><br><span class="line">        &lt;form&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;search&quot;&gt;</span><br><span class="line">        &lt;button&gt;&lt;i class&#x3D;&quot;fas fa-search&quot;&gt;&lt;&#x2F;i&gt;&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;&#x2F;form&gt;</span><br><span class="line">        &lt;nav&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;fas fa-outdent&quot;&gt;&lt;&#x2F;i&gt;商品陳列管理&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;fas fa-bullseye&quot;&gt;&lt;&#x2F;i&gt;商品庫存管理&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;fab fa-codepen&quot;&gt;&lt;&#x2F;i&gt;商品資料庫&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;fas fa-cog&quot;&gt;&lt;&#x2F;i&gt;銷售數據管理&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;far fa-credit-card&quot;&gt;&lt;&#x2F;i&gt;訂單處理&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;&#x2F;nav&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>我們這邊先建立一個 div <code>menu</code> 把整的內容包起來</li>
+<li>輸出一個搜尋與按鈕並用 <code>form</code> 包起來</li>
+<li>接著用 nav 去把我們的連結包起來，因為需要五個連接所以產生五個。</li>
+<li>我們需要 icon 所以在 head 上 輸入: icon 外部套件連結 (等等下面會再說明)然後將選好的 icon 貼進去標籤<code>a</code>裡面。</li>
+</ol>
+<hr>
+<h2 id="CSS-部分-上半部"><a href="#CSS-部分-上半部" class="headerlink" title="CSS 部分 (上半部)"></a>CSS 部分 (上半部)</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">            <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">            <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">            <span class="attribute">list-style</span>: none;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="selector-tag">html</span>,<span class="selector-tag">body</span>&#123;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="selector-tag">body</span>&#123;</span><br><span class="line">            <span class="attribute">background-color</span>: <span class="number">#546377</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-class">.menu</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">            <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">            <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">120deg</span>,<span class="number">#88d3ce</span>,<span class="number">#6e45e2</span>);</span><br><span class="line">            <span class="attribute">flex-direction</span>: column;</span><br><span class="line">            <span class="attribute">padding</span>: <span class="number">30px</span> <span class="number">0</span>;</span><br><span class="line">            <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">            <span class="attribute">box-shadow</span>: <span class="number">2px</span> <span class="number">0px</span> <span class="number">5px</span> <span class="built_in">rgba</span>(<span class="number">80</span>, <span class="number">200</span>, <span class="number">200</span>, .<span class="number">6</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-class">.menu</span> <span class="selector-tag">nav</span>&#123;</span><br><span class="line">            <span class="attribute">padding-top</span>:<span class="number">30px</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-tag">nav</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="attribute">text-decoration</span>: none;</span><br><span class="line">            <span class="attribute">padding</span>: <span class="number">15px</span>;</span><br><span class="line">            <span class="attribute">color</span>:black;</span><br><span class="line">            <span class="attribute">position</span>: relative;</span><br><span class="line">            <span class="attribute">display</span>: block;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="selector-tag">nav</span> <span class="selector-tag">a</span> + <span class="selector-tag">a</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">            <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="attribute">position</span>: absolute;</span><br><span class="line">            <span class="attribute">border</span>:  <span class="number">1px</span> solid white ;</span><br><span class="line">            <span class="attribute">top</span>:<span class="number">1px</span>;</span><br><span class="line">            <span class="attribute">width</span>: <span class="number">260px</span>;</span><br><span class="line">            </span><br><span class="line">        <span class="selector-tag">nav</span> <span class="selector-tag">a</span> <span class="selector-tag">i</span>&#123;</span><br><span class="line">            <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">10px</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br></pre></td></tr></table></figure>
+
+
+<ol>
+<li>先設定初始值歸零 margin , padding </li>
+<li>將 html 與 body 部分的高度為100%固定</li>
+<li>給背景顏色</li>
+</ol>
+<ul>
+<li>menu</li>
+</ul>
+<ol>
+<li>設定直立橫幅的寬度與高度(如果這邊沒將 html 的高度設定100%的話，會沒效果，因為你外面沒展開，你的盒子也會展不開)，並且給一個漸層背景 linear-gardient </li>
+<li>將整個menu的 flex 方向從橫向變成直向所以使用 flex-direction: column</li>
+<li> 設定一個 padding 值 (隨便調整的)</li>
+<li> 因為設定padding後，右邊就跑出拉條，所以輸入box-zizing : border-box 去修復</li>
+<li> 設定一個陰影上去比較美觀(自行調整)</li>
+</ol>
+<ul>
+<li>nav</li>
+</ul>
+<ol>
+<li>給一個padding-top讓他跟上面偏移</li>
+<li>連結<code>a</code>調整，將底線消除，並且 padding讓每個 <code>a</code>有分開</li>
+<li>字體給個黑色，並且排序(可以用 display:flex，也可以像這邊改變為塊元素，這樣就可以有一行的空間，就會排序了，所以也可以用 display:block</li>
+</ol>
+<ul>
+<li>nav a + a::befor </li>
+</ul>
+<p>這個要特別拿出來說，這邊使用<code>::befor</code>是因為要在a標籤之前加入一個偽元素，然後給予一個 border 線，並且定位在父元素<code>a</code> 然後給偽元素寬度後，並且設定 top 調整高度 ，這樣就可以在每個 a 的後面加入一個偽元素的底線了。</p>
+<p>後面就是將<code>a</code>裡面的<code>i</code>跟字體寫一個距離</p>
+<hr>
+<h2 id="CSS下半部"><a href="#CSS下半部" class="headerlink" title="CSS下半部"></a>CSS下半部</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.menu</span> <span class="selector-tag">form</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">1px</span> solid white;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">10px</span>;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.menu</span> <span class="selector-tag">form</span> <span class="selector-tag">input</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">border</span>: none;</span><br><span class="line">    <span class="attribute">color</span>:white;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5</span> <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">230px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: transparent;</span><br><span class="line">    <span class="attribute">outline</span>:none ;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.menu</span> <span class="selector-tag">form</span> <span class="selector-tag">button</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>: none;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">3px</span> <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: transparent;</span><br><span class="line">    <span class="attribute">outline</span>:none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">nav</span> <span class="selector-tag">a</span> <span class="selector-class">.fas</span>&#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: -<span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="attribute">transition</span>: .<span class="number">3s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">nav</span> <span class="selector-tag">a</span> <span class="selector-class">.fab</span>&#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: -<span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="attribute">transition</span>: .<span class="number">3s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">nav</span> <span class="selector-tag">a</span> <span class="selector-class">.far</span>&#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: -<span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="attribute">transition</span>: .<span class="number">3s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">nav</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.fas</span>&#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">0em</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">nav</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.fab</span> &#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">0em</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">nav</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.far</span>&#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">0em</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>form input</li>
+</ul>
+<ol>
+<li>先排序好表單</li>
+<li>給予一個 border 並且寫入 radius 變成園邊，然後設定左右距離</li>
+<li>在 input 將 border 取消 然後給一個字體，調整高度、寬度距離大小，並給予一個寬度(自行調整)</li>
+<li>把 input 內的背景變成透明的，所以輸入 <code>background-color:transparent</code>就可以透明化</li>
+<li>輸入<code>outline:none</code>可以將輸入時會跑出來的預設框框給關掉</li>
+<li>button寫法跟input一樣</li>
+</ol>
+<ul>
+<li>nav a 動畫</li>
+</ul>
+<p>這邊最後要做一個動畫，就是讓滑鼠移入的時候 icon跑出來</p>
+<ol>
+<li>先設定 icon (不同icon可能預設class會不同，要注意) 給予一個<code>margin-right:-1em</code>這樣可以讓文字往圖片靠</li>
+<li>接著輸入<code>transform:scale(0)</code>這邊是 icon的縮放變成0</li>
+<li>設定 hover 滑鼠移動碰到時，<code>margin</code>正常 跟 <code>transform:scale(1)</code> 讓縮放變回來</li>
+<li>最後設定一個<code>transtion</code>讓動畫延遲比較美觀</li>
+</ol>
+<hr>
+<h2 id="檢討"><a href="#檢討" class="headerlink" title="檢討"></a>檢討</h2><p>這個實作，有進入狀況的感覺，在 befor 那邊有卡了一下，不懂那邊是怎麼操作的，後來就有自己去查資料就可以拼湊理解。</p>
+<p>而在後面做出簡單動畫那邊要理解不難，只是一開始碰到<code>scale</code> +a 阿這些css就會卡住不知道這幹嘛的，然後再跑去google</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201706/pseudo-element-1.html">befor after 觀念文章 </a></p>
+<p><a target="_blank" rel="noopener" href="http://www.flycan.com/article/css/css3-transform-2d-1243.html">CSS3 教學 Transform 變形效果</a></p>
+<p><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2015/07/css_25.html">CSS 選擇器中加號（+）和取代符號／波浪號（~）的意思</a></p>
+<hr>
+<h3 id="完整原始碼"><a href="#完整原始碼" class="headerlink" title="完整原始碼"></a>完整原始碼</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;直式側邊選單&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;kit.fontawesome.com&#x2F;2a3dfbc483.js&quot; crossorigin&#x3D;&quot;anonymous&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        *&#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">            list-style: none;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        html,body&#123;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line">        body&#123;</span><br><span class="line">            background-color: #546377;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .menu&#123;</span><br><span class="line">            width: 300px;</span><br><span class="line">            height: 100%;</span><br><span class="line">            background: linear-gradient(120deg,#88d3ce,#6e45e2);</span><br><span class="line">            flex-direction: column;</span><br><span class="line">            padding: 30px 0;</span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">            box-shadow: 2px 0px 5px rgba(80, 200, 200, .6);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .menu nav&#123;</span><br><span class="line">            padding-top:30px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        nav a &#123;</span><br><span class="line">            </span><br><span class="line">            text-decoration: none;</span><br><span class="line">            padding: 15px;</span><br><span class="line">            color:black;</span><br><span class="line">            position: relative;</span><br><span class="line">            display: block;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        nav a + a::before &#123;</span><br><span class="line">             content: &quot;&quot;;</span><br><span class="line">            position: absolute;</span><br><span class="line">            border:  1px solid white ;</span><br><span class="line">            top:1px;</span><br><span class="line">            width: 260px;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        nav a i&#123;</span><br><span class="line">            padding: 0 10px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .menu form&#123;</span><br><span class="line"></span><br><span class="line">            display: flex;</span><br><span class="line">            border-radius: 100px;</span><br><span class="line">            border:1px solid white;</span><br><span class="line">            margin: 0 10px;</span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .menu form input&#123;</span><br><span class="line"></span><br><span class="line">            border: none;</span><br><span class="line">            color:white;</span><br><span class="line">            padding: 5 10px;</span><br><span class="line">            width: 230px;</span><br><span class="line">            background-color: transparent;</span><br><span class="line">            outline:none ;</span><br><span class="line">    </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .menu form button&#123;</span><br><span class="line">            border: none;</span><br><span class="line">            padding: 3px 10px;</span><br><span class="line">            width: 50px;</span><br><span class="line">            background-color: transparent;</span><br><span class="line">            outline:none;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        nav a .fas&#123;</span><br><span class="line">            margin-right: -1em;</span><br><span class="line">            transform: scale(0);</span><br><span class="line">            transition: .3s;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        nav a .fab&#123;</span><br><span class="line">            margin-right: -1em;</span><br><span class="line">            transform: scale(0);</span><br><span class="line">            transition: .3s;</span><br><span class="line">        &#125;</span><br><span class="line">        nav a .far&#123;</span><br><span class="line">            margin-right: -1em;</span><br><span class="line">            transform: scale(0);</span><br><span class="line">            transition: .3s;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        nav a:hover .fas&#123;</span><br><span class="line">            margin-right: 0em;</span><br><span class="line">            transform: scale(1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        nav a:hover .fab &#123;</span><br><span class="line">            margin-right: 0em;</span><br><span class="line">            transform: scale(1);</span><br><span class="line">        &#125;</span><br><span class="line">        nav a:hover .far&#123;</span><br><span class="line">            margin-right: 0em;</span><br><span class="line">            transform: scale(1);</span><br><span class="line">        &#125;</span><br><span class="line">           </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class&#x3D;&quot;menu&quot;&gt;</span><br><span class="line">        &lt;form&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;search&quot;&gt;</span><br><span class="line">        &lt;button&gt;&lt;i class&#x3D;&quot;fas fa-search&quot;&gt;&lt;&#x2F;i&gt;&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;&#x2F;form&gt;</span><br><span class="line">        &lt;nav&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;fas fa-outdent&quot;&gt;&lt;&#x2F;i&gt;商品陳列管理&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;fas fa-bullseye&quot;&gt;&lt;&#x2F;i&gt;商品庫存管理&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;fab fa-codepen&quot;&gt;&lt;&#x2F;i&gt;商品資料庫&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;fas fa-cog&quot;&gt;&lt;&#x2F;i&gt;銷售數據管理&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;far fa-credit-card&quot;&gt;&lt;&#x2F;i&gt;訂單處理&lt;&#x2F;a&gt;</span><br><span class="line">        &lt;&#x2F;nav&gt;</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/21/CSS%20-%20%E8%B6%85%E9%80%9A%E7%94%A8%E6%A9%AB%E5%BC%8F%E7%89%88%E9%9D%A2%20(%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88)/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-21 19:48:10
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/CSS%E5%88%87%E7%89%88%E7%B7%B4%E7%BF%92/" title="CSS切版練習">
+                        <b>#</b> CSS切版練習
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2020/12/22/CSS%20-%20%E5%88%87%E4%B8%80%E5%80%8B%E4%BA%A4%E9%8C%AF%E6%BC%82%E6%B5%AE%E7%89%88%20(%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88)/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS-%E5%81%B4%E9%82%8A%E9%81%B8%E5%96%AE%E6%80%8E%E9%BA%BC%E5%88%87-%E9%87%91%E9%AD%9A%E5%88%87%E7%89%88"><span class="toc-text">CSS - 側邊選單怎麼切 (金魚切版)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E5%93%81"><span class="toc-text">作品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#body%E9%83%A8%E5%88%86%E8%AC%9B%E8%A7%A3"><span class="toc-text">body部分講解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E9%83%A8%E5%88%86-%E4%B8%8A%E5%8D%8A%E9%83%A8"><span class="toc-text">CSS 部分 (上半部)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E4%B8%8B%E5%8D%8A%E9%83%A8"><span class="toc-text">CSS下半部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AA%A2%E8%A8%8E"><span class="toc-text">檢討</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E5%8E%9F%E5%A7%8B%E7%A2%BC"><span class="toc-text">完整原始碼</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      實作一個表單檢查器 form validator 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">實作一個表單檢查器 form validator</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/Javascript-%E4%BD%9C%E5%93%81/" title="Javascript 作品">
+                    <b>#</b> Javascript 作品
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="實作一個唱盤會旋轉的音樂播放器"><a href="#實作一個唱盤會旋轉的音樂播放器" class="headerlink" title="實作一個唱盤會旋轉的音樂播放器"></a>實作一個唱盤會旋轉的音樂播放器</h1><h1 id="作品"><a href="#作品" class="headerlink" title="作品"></a><a target="_blank" rel="noopener" href="https://hongchingisme.github.io/My_projects/MusicPlayer/">作品</a></h1><p><img src="https://i.imgur.com/mWMha9Q.png"></p>
+<p><a target="_blank" rel="noopener" href="https://hackmd.io/@jIw4XCELQByqRnyHflOKKw/HybP0k1eO">Html , CSS , Jquery 原始碼</a></p>
+<h2 id="本實作想實現的功能"><a href="#本實作想實現的功能" class="headerlink" title="本實作想實現的功能:"></a>本實作想實現的功能:</h2><ol>
+<li>可以播放音樂</li>
+<li>可以跳到下一首跟上一首</li>
+<li>點擊時播放 icon 會變</li>
+<li>顯示音樂播放到哪時改變 width 達成讀取條的效果</li>
+<li>選擇讀取條的位置可以跳轉到讀取條的音樂時間軸</li>
+</ol>
+<h2 id="實作過程遇到的問題"><a href="#實作過程遇到的問題" class="headerlink" title="實作過程遇到的問題"></a>實作過程遇到的問題</h2><p>一開始我沒看影片,有成功將 icon 轉換，但後來不知道如何去讓音樂播放，自己 google 有 google 到辦法，也有成功讓音樂播放，但接著就是要如何讓歌曲可以隨著音樂時間，讓上面的進度條跟著動我就卡住了，所以最後還是看教學影片去理解。</p>
+<p>教學影片是 javasricp 後來我自己再寫一次專案，然後是用 JQuery 來寫，有碰到幾個問題</p>
+<ul>
+<li>第一個問題:</li>
+</ul>
+<h3 id="不能像-js-那樣直接更改-src-裡面的內容"><a href="#不能像-js-那樣直接更改-src-裡面的內容" class="headerlink" title="不能像 js 那樣直接更改 src 裡面的內容"></a>不能像 js 那樣直接更改 <code>src</code> 裡面的內容</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">這是 javscript</span><br><span class="line">audio.src = <span class="string">`music/<span class="subst">$&#123;song&#125;</span>.mp3`</span></span><br><span class="line">    cover.src = <span class="string">`img/<span class="subst">$&#123;song&#125;</span>.jpg`</span></span><br><span class="line"></span><br><span class="line">這是 JQuery</span><br><span class="line">audio.attr(<span class="string">&#x27;src&#x27;</span>, <span class="string">`music/<span class="subst">$&#123;song&#125;</span>.mp3`</span>);</span><br><span class="line">    cover.attr (<span class="string">&#x27;src&#x27;</span>,<span class="string">`img/<span class="subst">$&#123;song&#125;</span>.jpg`</span>)</span><br></pre></td></tr></table></figure>
+
+<p>後來成功 google 到答案，要透過 attr 去抓取該 id 的屬性才可以調整</p>
+<ul>
+<li>第二個問題:</li>
+</ul>
+<h3 id="我要讓歌曲播放時，發現不能播放"><a href="#我要讓歌曲播放時，發現不能播放" class="headerlink" title="我要讓歌曲播放時，發現不能播放"></a>我要讓歌曲播放時，發現不能播放</h3><p>後來也有成功解決問題，因為 JQuery 當中要使用 get()來獲取 DOM 元素所以要這樣寫:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">這是 javascript</span><br><span class="line"></span><br><span class="line">audio.play();</span><br><span class="line"></span><br><span class="line">這是 JQuery</span><br><span class="line">$(<span class="string">&#x27;#audio&#x27;</span>).get(<span class="number">0</span>).play();</span><br></pre></td></tr></table></figure>
+
+<p>因為 audio.play() 的用法是原生 js 的　api　，所以不可以在　jQuery 直接這樣寫，要使用 get 去抓取 DOM 才可以</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4646998/play-pause-html-5-video-using-jquery">Play/pause HTML 5 video using JQuery</a></p>
+<h3 id="抓取-audio-當中的-duration-跟-currentTime-出現問題"><a href="#抓取-audio-當中的-duration-跟-currentTime-出現問題" class="headerlink" title="抓取 audio 當中的 duration 跟 currentTime 出現問題"></a>抓取 audio 當中的 duration 跟 currentTime 出現問題</h3><p>我本來直接透過 <code>audio.duration</code> 跟 <code>currentTime</code> 來抓，但都會抓不到我要的值，後來發現有人有在網路上問過跟我一樣的問題，後來是使用 <code>this.</code>來解決的 </p>
+<p>然後在事件當中，如果要直接抓取 <code>duration</code> 跟 <code>currenTime</code> 但並不是在 audio 事件當中時，要透過 <code>audio[0].currentTime</code> 這種方式才拿的到值，要不然會顯示 NAN ，因為要設定 <code>[0]</code> 才可以找到 index 裡面的 audio DOM element</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/11203773/how-can-i-get-the-html5-audios-duration-time">How can I get the html5 audio’s duration time</a></p>
+<p>這邊查到快吐血 </p>
+<h3 id="寫入事件監聽時，不能直接用-timeupdate-跟-click"><a href="#寫入事件監聽時，不能直接用-timeupdate-跟-click" class="headerlink" title="寫入事件監聽時，不能直接用 timeupdate  跟 click"></a>寫入事件監聽時，不能直接用 <code>timeupdate</code>  跟 <code>click</code></h3><p>一開始我也是照著 js 的方法去寫，但後來發現 timeupdate 也是有一樣的問題，因為他是專門給 js api 用的，所以會沒辦法執行，不斷 google 後發現<a target="_blank" rel="noopener" href="https://forum.jquery.com/topic/jquery-audio-time-duration-change-on-slider-click">這篇文章</a></p>
+<p>我把事件改成 on 事件就可以執行了</p>
+<p>然後接著又遇到一樣的問題，我在寫下一個點擊的事件也是，直接使用 click 無法執行，要在前面加入 <code>bind</code> 才可以，我 google 後的理解是，寫入 <code>bind</code> 事件，才可以在事件內抓取 audio 的 api</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19739384/bind-timeupdate-with-jquery-on-html5-audio-element">bind ‘timeupdate’ with jquery on html5 audio element</a></p>
+<h2 id="實作內容"><a href="#實作內容" class="headerlink" title="實作內容"></a>實作內容</h2><h3 id="HTML-部分"><a href="#HTML-部分" class="headerlink" title="HTML 部分"></a>HTML 部分</h3><p><img src="https://i.imgur.com/O70qMJM.png"></p>
+<p>主要是要使用 audio 去放音樂位置，才可以使用 api 去抓取然後實現播放等功能</p>
+<p>其他地方沒有特別要說明的，如果想知道實際如何切可以到最上面有原程式碼的細節</p>
+<h3 id="CSS-部分"><a href="#CSS-部分" class="headerlink" title="CSS 部分"></a>CSS 部分</h3><p><img src="https://i.imgur.com/lWmhYky.png"></p>
+<p>CSS 細節可以透過原程式碼觀看，這邊提出幾個比較特殊的寫法來討論。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.img-container</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>:  <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">object-fit</span>: cover;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">width</span>: inherit;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">bottom</span>: -<span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">animation</span>: rotate <span class="number">3s</span> linear infinite;</span><br><span class="line">    <span class="attribute">animation-play-state</span> : paused;</span><br><span class="line">    <span class="attribute">border</span>:  <span class="number">1px</span> solid wheat;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">@keyframes</span> rotate&#123;</span><br><span class="line">    <span class="selector-tag">from</span>&#123;</span><br><span class="line">        <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0deg</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">to</span>&#123;</span><br><span class="line">        <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在設定圖片的 CSS 當中，有幾個特殊的用法:</p>
+<ol>
+<li>使用 <code>ingerit</code> ，繼承屬性 (如果沒有在元素上指定繼承屬性的值，則該元素將在其父元素上獲取該屬性的值。)</li>
+<li>使用 <code>animation</code> 然後寫入 <code>rotate</code> 下面再寫入<code>rotate</code>是從0度到360度，讓圖片能轉一圈</li>
+<li><code>linear</code> :表示從開始到結束的速度一致</li>
+<li><code>infinite</code> 動畫永久播放</li>
+<li><code>animation-play-state : paused</code> : 這個是設定動畫暫停的意思</li>
+</ol>
+<p>接著，讓我們輸入 <code>play</code> class 的時候，讓動畫開始：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.music-container</span><span class="selector-class">.play</span> <span class="selector-class">.img-container</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="comment">/* 這個式設定動畫開始的意思 */</span></span><br><span class="line">    <span class="attribute">animation-play-state</span>:running;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其餘的 CSS 為基本的排版，加上一些基本動畫，但之前有用過一些了所以不特別挪出來介紹，可以從詳細的程式碼看到完整的 CSS</p>
+<hr>
+<h3 id="Jquery-部分"><a href="#Jquery-部分" class="headerlink" title="Jquery 部分"></a>Jquery 部分</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> musicContainer = $(<span class="string">&#x27;#music-container&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> playBtn = $(<span class="string">&#x27;#play&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> prevBtn = $(<span class="string">&#x27;#prev&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> nextBtn = $(<span class="string">&#x27;#next&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> audio = $(<span class="string">&#x27;#audio&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> progress = $(<span class="string">&#x27;#progress&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> progressContainer = $(<span class="string">&#x27;#progress-container&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> title = $(<span class="string">&#x27;#title&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> cover =  $(<span class="string">&#x27;#cover&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>一開始我們先抓取 DOM</p>
+<h3 id="將歌曲資訊輸入進去-html-當中"><a href="#將歌曲資訊輸入進去-html-當中" class="headerlink" title="將歌曲資訊輸入進去 html 當中"></a>將歌曲資訊輸入進去 html 當中</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> songs = [<span class="string">&#x27;HelloGoodbye&#x27;</span> ,<span class="string">&#x27;Onemoretime&#x27;</span> ,<span class="string">&#x27;RainMusic&#x27;</span>] ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> songsIndex = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loadsong(songs [songsIndex]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadsong</span>(<span class="params">song</span>)</span>&#123;</span><br><span class="line">    title.text(song)</span><br><span class="line">    audio.attr(<span class="string">&#x27;src&#x27;</span>, <span class="string">`music/<span class="subst">$&#123;song&#125;</span>.mp3`</span>);</span><br><span class="line">    cover.attr (<span class="string">&#x27;src&#x27;</span>,<span class="string">`img/<span class="subst">$&#123;song&#125;</span>.jpg`</span>)</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>接著我們寫入一個歌曲的陣列，陣列當中要使用歌曲的名字，這樣等等再寫函式的時候可以利用抓取陣列字串把他丟進 HTML 裡面顯示</li>
+<li>設定變數 <code>songsIndex</code> = 1 讓陣列當中第二個數據變成預設值</li>
+<li>呼叫函式 <code>loadsong(songs [songsIndex]);</code> 參數為歌曲陣列，然後是剛剛定義好的變數，這樣可以讓 <code>loadsong</code> 去判斷是陣列中哪個數據</li>
+<li>寫入函式 <code>loadsong(song)</code> </li>
+<li>讓 <code>title</code> 寫入 <code>(song)</code> 就可以將當前陣列的數據寫入</li>
+<li>設定 audio ， 使用 <code>attr</code> 抓取 <code>src</code> 屬性，並且將路徑更改為陣列名稱的 mp3</li>
+<li>設定 cover ， 使用 <code>attr</code> 抓取 <code>src</code> 屬性，並且將路徑更改為陣列名稱的 mp3</li>
+</ol>
+<p>這樣就完成了，可以成功將當前的歌曲名稱、歌曲、圖片輸入進去 html 當中！讚讚讚</p>
+<p><img src="https://i.imgur.com/YATia1Y.png"></p>
+<h3 id="寫入點擊事件，可以更換-icon"><a href="#寫入點擊事件，可以更換-icon" class="headerlink" title="寫入點擊事件，可以更換 icon"></a>寫入點擊事件，可以更換 icon</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">playBtn.click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(musicContainer.hasClass(<span class="string">&#x27;play&#x27;</span>))&#123;</span><br><span class="line">        pauseSong();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        playSong();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">playSong</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;#music-container&#x27;</span>).addClass(<span class="string">&#x27;play&#x27;</span>);</span><br><span class="line">    playBtn.find(<span class="string">&#x27;i.fas&#x27;</span>).removeClass(<span class="string">&#x27;fa-play&#x27;</span>);</span><br><span class="line">    playBtn.find(<span class="string">&#x27;i.fas&#x27;</span>).addClass(<span class="string">&#x27;fa-pause&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    $(<span class="string">&#x27;#audio&#x27;</span>).get(<span class="number">0</span>).play();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pauseSong</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;#music-container&#x27;</span>).removeClass(<span class="string">&#x27;play&#x27;</span>);</span><br><span class="line">    playBtn.find(<span class="string">&#x27;i.fas&#x27;</span>).addClass(<span class="string">&#x27;fa-play&#x27;</span>);</span><br><span class="line">    playBtn.find(<span class="string">&#x27;i.fas&#x27;</span>).removeClass(<span class="string">&#x27;fa-pause&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    $(<span class="string">&#x27;#audio&#x27;</span>).get(<span class="number">0</span>).pause();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>寫入點擊事件</li>
+<li>事件當中，我們寫入一個 if 判斷，當<code>musicContainer</code>當中，有 <code>play</code> 的 class 時，會執行 <code>pauseSong</code> 函式，若沒有，則執行 <code>playSong</code> 函式<br><img src="https://i.imgur.com/4Q4kbhY.png"></li>
+<li>寫入 playSong 函式:<br>點擊的時候，增加 <code>play</code> class 接著將 <code>playBtn</code> 裡面的 <code>i.fas</code> class  刪除 <code>fa-play</code> 的 icon，並且加入 <code>fa-pause</code> 的 icon ，讓我們點播放的時候可以讓 icon 轉換成暫停，增加互動</li>
+<li>寫入 pauseSong 函式:<br>移除 <code>play</code> class 並且增加 <code>fa-play</code> 刪除 <code>fa-pause</code> 原理跟上面一樣</li>
+<li>使用 audio ，因為用 JQuery 來寫所以在使用 audio 的 js api 的時候，要先用 <code>get()</code> 來取得陣列當中的初始值才可以執行</li>
+</ol>
+<p><img src="https://i.imgur.com/VEFKGxE.png"></p>
+<h3 id="寫入-下一首-與-上一首功能"><a href="#寫入-下一首-與-上一首功能" class="headerlink" title="寫入 下一首 與 上一首功能"></a>寫入 下一首 與 上一首功能</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">nextBtn.click(<span class="function"><span class="keyword">function</span> <span class="title">nextSong</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    songsIndex++;</span><br><span class="line">    <span class="keyword">if</span>(songsIndex &gt; songs.length -<span class="number">1</span> )&#123;</span><br><span class="line">        songsIndex  = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    loadsong(songs [songsIndex]);</span><br><span class="line">    playSong();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">prevBtn.click (<span class="function"><span class="keyword">function</span> <span class="title">prevSong</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    songsIndex--;</span><br><span class="line">    <span class="keyword">if</span>(songsIndex &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        songsIndex = songs.length - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    loadsong(songs [songsIndex]);</span><br><span class="line">    playSong();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>接著寫入點擊事件:</p>
+<ol>
+<li><p>下一首歌曲的點擊事件</p>
+</li>
+<li><p>寫入 <code>songsIndex++</code> 讓使用者點及下一首歌曲的 <code>icon</code> 時，讓陣列自動+1選取下一個數據</p>
+</li>
+<li><p>寫入判斷，如果<code>songsIndex</code> 大於 歌曲陣列 -1 的長度時執行，意思就是，當我們的 ++ 大於我們陣列的數據數量，我們就讓它執行 <code> songsIndex  = 0</code> 讓陣列回到一開始的狀態</p>
+</li>
+<li><p>載入歌曲</p>
+</li>
+<li><p>播放歌曲</p>
+</li>
+<li><p>上一首歌曲的點擊事件</p>
+</li>
+<li><p>寫入 <code>songsIndex--</code> 讓使用者點及下一首歌曲的 <code>icon</code> 時，讓陣列自動-1選取上一個數據</p>
+</li>
+<li><p>寫入判斷，如果<code>songsIndex</code> 小於 0 ，我們就讓它執行 <code> songsIndex  = s.length - 1</code> 讓陣列變成最後一首歌曲</p>
+</li>
+<li><p>載入歌曲</p>
+</li>
+<li><p>播放歌曲</p>
+</li>
+</ol>
+<h3 id="讓歌曲進行時，讀取條的顏色更著改變"><a href="#讓歌曲進行時，讀取條的顏色更著改變" class="headerlink" title="讓歌曲進行時，讀取條的顏色更著改變"></a>讓歌曲進行時，讀取條的顏色更著改變</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">audio.on(<span class="string">&#x27;timeupdate&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> duration = <span class="built_in">this</span>.duration;</span><br><span class="line">    <span class="keyword">const</span> currentTime = <span class="built_in">this</span>.currentTime;</span><br><span class="line">    <span class="keyword">const</span> progressPercent = ((currentTime / duration) *<span class="number">100</span> );</span><br><span class="line">    progress.width (<span class="string">`<span class="subst">$&#123;progressPercent&#125;</span>%`</span>); </span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>寫入 timeupdate 監聽事件，要使用 <code>on</code> 要不然會抓不到 timeupdate ，因為這是 js 的 audio api 事件用法</li>
+<li>設定變數為當前的 duration (duration 為 js audio 當中 api 的用法，用來抓取音頻的長度</li>
+<li>設定變數抓取當前的音頻位置 (屬性會返還音頻當前位置 (秒針表示) 當設定該屬性時，播放會跳到指定位置</li>
+<li>設定 <code>progressPercent</code> 變數，讓數值為 音頻位置/音頻長度 *100 這樣就可以抓到當前音樂的位置</li>
+<li>將數值導入 <code>progress</code> 的 <code>width</code> 當中，這樣就時間可以一邊撥放一邊更新 bar 的功能</li>
+</ol>
+<h3 id="寫入點擊-bar-時，直接跳轉到當前點擊的位置"><a href="#寫入點擊-bar-時，直接跳轉到當前點擊的位置" class="headerlink" title="寫入點擊 bar 時，直接跳轉到當前點擊的位置"></a>寫入點擊 bar 時，直接跳轉到當前點擊的位置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">progressContainer.bind(<span class="string">&#x27;click&#x27;</span> ,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> width = progressContainer.width()</span><br><span class="line">    <span class="keyword">const</span> clickX =  progressContainer.offset().left  </span><br><span class="line">    <span class="keyword">const</span> duration =  audio[<span class="number">0</span>].duration;</span><br><span class="line">    <span class="keyword">const</span> page  = e.pageX;</span><br><span class="line">    audio[<span class="number">0</span>].currentTime= ((page-clickX) /width)*duration;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>設定變數 width = <code>progressContainer</code> 的寬度</li>
+<li>設定變數 clickX = 抓取  <code>progressContainer</code>  X 座標，可以得到 <code>progressContainer</code> 與頁面的距離</li>
+<li>定義 duration 為 音頻的長度 (要注意這邊要使用 [0] 來抓到 DOM ，因為 JQuery 不像 JS 這樣可以直接使用 audio api ，要先透過抓取到陣列才抓到陣列的數據的 DOM)</li>
+<li>設定變數page 為當前點擊的位置與頁面的距離</li>
+<li>將音頻的位置 (目前點擊的距離 - progressContainer 距離 ) / 總寬度 *音頻長度</li>
+</ol>
+<h3 id="寫入歌曲結束後自動撥放下一首歌曲"><a href="#寫入歌曲結束後自動撥放下一首歌曲" class="headerlink" title="寫入歌曲結束後自動撥放下一首歌曲"></a>寫入歌曲結束後自動撥放下一首歌曲</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">audio.on(<span class="string">&#x27;ended&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    songsIndex++;</span><br><span class="line">    <span class="keyword">if</span>(songsIndex &gt; songs.length -<span class="number">1</span> )&#123;</span><br><span class="line">        songsIndex  = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    loadsong(songs [songsIndex]);</span><br><span class="line">    playSong();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>寫入 <code>ended </code> 事件，就是指在 audio 結束時觸發的事件</li>
+<li>寫入下一首的功能</li>
+</ol>
+<p>本專案結束</p>
+<hr>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p>css:</p>
+<p><a target="_blank" rel="noopener" href="https://cythilya.github.io/2017/08/27/css-animation/">CSS3 Animation</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Animations/Using_CSS_animations">CSS animation 設定</a><br><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201803/css-animation.html">完整解析 CSS 動畫 ( CSS Animation )</a><br><a target="_blank" rel="noopener" href="https://happyjayxin.medium.com/css-%E7%B9%BC%E6%89%BF%E5%B1%AC%E6%80%A7-c734049cfbb3">CSS 繼承屬性</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-play-state">animation-play-state</a><br>js:</p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/chloelo925/jquery-scrolltop-offset-%E9%81%8B%E7%94%A8-f7bbe93b77c4">JQuery — scrollTop, offset 運用</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jquery/dom_element_methods_get.asp">jQuery DOM 元素方法 - get() 方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7544243/html5-audio-duration-using-jquery">HTML5 audio duration using jQuery</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/29446410/offset-not-updating-on-mousedown-event-during-a-click-hold-and-drag">Offset not updating on mousedown event during a click hold and drag</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/28399934/why-is-video-currenttime-and-duration-undefined-accessing-from-jquery">Why is video currentTime and duration undefined accessing from JQuery?
+</a></p>
+<p><a target="_blank" rel="noopener" href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/232048/">jQuery繫結事件方法及區別(bind,click,on,live,one)</a></p>
+<p><a target="_blank" rel="noopener" href="https://forum.jquery.com/topic/jquery-audio-time-duration-change-on-slider-click">jQuery Audio Time Duration Change on Slider Click<br>in Using jQuery  •  1 year ago  </a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19739384/bind-timeupdate-with-jquery-on-html5-audio-element">bind ‘timeupdate’ with jquery on html5 audio element</a></p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/01/30/%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E8%A8%98%E5%B8%B3%E7%B0%BF/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-02-02 21:48:01
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Javascript-%E4%BD%9C%E5%93%81/" title="Javascript 作品">
+                        <b>#</b> Javascript 作品
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/02/10/%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E6%8D%B2%E5%8B%95%E8%87%B3%E9%A0%81%E9%9D%A2%E5%BA%95%E7%AB%AF%EF%BC%8C%E5%B0%B1%E6%9C%83%E9%A1%AF%E7%A4%BA%E6%9B%B4%E5%A4%9A%E6%96%87%E7%AB%A0%E7%9A%84%E5%8A%9F%E8%83%BD%20/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E5%94%B1%E7%9B%A4%E6%9C%83%E6%97%8B%E8%BD%89%E7%9A%84%E9%9F%B3%E6%A8%82%E6%92%AD%E6%94%BE%E5%99%A8"><span class="toc-text">實作一個唱盤會旋轉的音樂播放器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E5%93%81"><span class="toc-text">作品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%AF%A6%E4%BD%9C%E6%83%B3%E5%AF%A6%E7%8F%BE%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">本實作想實現的功能:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E9%81%8E%E7%A8%8B%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-text">實作過程遇到的問題</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%83%BD%E5%83%8F-js-%E9%82%A3%E6%A8%A3%E7%9B%B4%E6%8E%A5%E6%9B%B4%E6%94%B9-src-%E8%A3%A1%E9%9D%A2%E7%9A%84%E5%85%A7%E5%AE%B9"><span class="toc-text">不能像 js 那樣直接更改 src 裡面的內容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E8%A6%81%E8%AE%93%E6%AD%8C%E6%9B%B2%E6%92%AD%E6%94%BE%E6%99%82%EF%BC%8C%E7%99%BC%E7%8F%BE%E4%B8%8D%E8%83%BD%E6%92%AD%E6%94%BE"><span class="toc-text">我要讓歌曲播放時，發現不能播放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%93%E5%8F%96-audio-%E7%95%B6%E4%B8%AD%E7%9A%84-duration-%E8%B7%9F-currentTime-%E5%87%BA%E7%8F%BE%E5%95%8F%E9%A1%8C"><span class="toc-text">抓取 audio 當中的 duration 跟 currentTime 出現問題</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5%E4%BA%8B%E4%BB%B6%E7%9B%A3%E8%81%BD%E6%99%82%EF%BC%8C%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E7%94%A8-timeupdate-%E8%B7%9F-click"><span class="toc-text">寫入事件監聽時，不能直接用 timeupdate  跟 click</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E5%85%A7%E5%AE%B9"><span class="toc-text">實作內容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-%E9%83%A8%E5%88%86"><span class="toc-text">HTML 部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E9%83%A8%E5%88%86"><span class="toc-text">CSS 部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jquery-%E9%83%A8%E5%88%86"><span class="toc-text">Jquery 部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%87%E6%AD%8C%E6%9B%B2%E8%B3%87%E8%A8%8A%E8%BC%B8%E5%85%A5%E9%80%B2%E5%8E%BB-html-%E7%95%B6%E4%B8%AD"><span class="toc-text">將歌曲資訊輸入進去 html 當中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5%E9%BB%9E%E6%93%8A%E4%BA%8B%E4%BB%B6%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%9B%B4%E6%8F%9B-icon"><span class="toc-text">寫入點擊事件，可以更換 icon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5-%E4%B8%8B%E4%B8%80%E9%A6%96-%E8%88%87-%E4%B8%8A%E4%B8%80%E9%A6%96%E5%8A%9F%E8%83%BD"><span class="toc-text">寫入 下一首 與 上一首功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%93%E6%AD%8C%E6%9B%B2%E9%80%B2%E8%A1%8C%E6%99%82%EF%BC%8C%E8%AE%80%E5%8F%96%E6%A2%9D%E7%9A%84%E9%A1%8F%E8%89%B2%E6%9B%B4%E8%91%97%E6%94%B9%E8%AE%8A"><span class="toc-text">讓歌曲進行時，讀取條的顏色更著改變</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5%E9%BB%9E%E6%93%8A-bar-%E6%99%82%EF%BC%8C%E7%9B%B4%E6%8E%A5%E8%B7%B3%E8%BD%89%E5%88%B0%E7%95%B6%E5%89%8D%E9%BB%9E%E6%93%8A%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-text">寫入點擊 bar 時，直接跳轉到當前點擊的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5%E6%AD%8C%E6%9B%B2%E7%B5%90%E6%9D%9F%E5%BE%8C%E8%87%AA%E5%8B%95%E6%92%A5%E6%94%BE%E4%B8%8B%E4%B8%80%E9%A6%96%E6%AD%8C%E6%9B%B2"><span class="toc-text">寫入歌曲結束後自動撥放下一首歌曲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

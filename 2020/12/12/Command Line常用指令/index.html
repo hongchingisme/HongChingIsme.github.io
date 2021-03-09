@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Command Line常用指令 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Command Line常用指令</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/%E5%9F%BA%E7%A4%8E%E7%92%B0%E5%A2%83%E8%88%87%E5%B7%A5%E5%85%B7/" title="基礎環境與工具">
+                    <b>#</b> 基礎環境與工具
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="Command-Line常用指令"><a href="#Command-Line常用指令" class="headerlink" title="Command Line常用指令"></a>Command Line常用指令</h1><h2 id="Command-Line的指令中，有幾個比較常用的輸入法"><a href="#Command-Line的指令中，有幾個比較常用的輸入法" class="headerlink" title="Command Line的指令中，有幾個比較常用的輸入法:"></a>Command Line的指令中，有幾個比較常用的輸入法:</h2><h3 id="cd-進入"><a href="#cd-進入" class="headerlink" title="cd: 進入"></a>cd: 進入</h3><p>當我輸入cd+空格+某個資料夾名稱就會進入該資料夾，如範例:<br><img src="https://i.imgur.com/OFfd3wN.png"><br>這邊我是進入一個叫做「git123」的資料夾<br><img src="https://i.imgur.com/uB1UJBX.png"></p>
+<p>那我們想回到剛剛的地方呢?<br>只要輸入<code>cd ..</code>就可以回到上一頁了!</p>
+<p>../.. :上上一頁，上一頁就是 cd .. 以此類推</p>
+<p><img src="https://i.imgur.com/xj6d55x.png"></p>
+<p>這邊輸入 <code>cd ..</code>之後就回到F槽了!</p>
+<hr>
+<h3 id="ls-查看"><a href="#ls-查看" class="headerlink" title="ls: 查看"></a>ls: 查看</h3><p>列出當前地方底下的東西有哪些，如範例:<br><img src="https://i.imgur.com/z2gicMm.png"><br>當我輸入ls之後，他告訴我在 git123 資料夾當中有README.md 這個檔案 </p>
+<p><code>ls-a:顯示隱藏資料</code><br><code>ls-l:顯示詳細資料</code></p>
+<hr>
+<h3 id="mkdir-建立資料夾"><a href="#mkdir-建立資料夾" class="headerlink" title="mkdir: 建立資料夾"></a>mkdir: 建立資料夾</h3><p>-<img src="https://i.imgur.com/SJxegFY.png"><br>我這邊建立了一個名為 test 的資料夾，建立後可以輸入ls查看當前有哪些檔案<br><img src="https://i.imgur.com/tMlRH5R.png"></p>
+<p>可以發現這邊多了一個 text ,藍色為資料夾的意思</p>
+<hr>
+<h3 id="pwd-顯示目前的路徑"><a href="#pwd-顯示目前的路徑" class="headerlink" title="pwd:顯示目前的路徑"></a>pwd:顯示目前的路徑</h3><p>當你發現，你忘記你現在在哪個路徑的時候，可以輸入 pwd，它會告訴你目前的路徑在哪裡!就不會迷失方向了!</p>
+<p><img src="https://i.imgur.com/sU82imc.png"></p>
+<p>這邊輸入後它告訴我，我的路徑在F槽裡面的 GIT123 資料夾裡面</p>
+<hr>
+<h3 id="touch-建立一個檔案"><a href="#touch-建立一個檔案" class="headerlink" title="touch:建立一個檔案"></a>touch:建立一個檔案</h3><p><img src="https://i.imgur.com/g6gPtHH.png"><br>我這邊輸入了touch index.html，就是要創建一個名為 index 的 html 檔案，創建完畢之後，輸入ls確認</p>
+<p><img src="https://i.imgur.com/BRyXFSr.png"></p>
+<p>多了一個 index.html 檔案!</p>
+<hr>
+<h3 id="rmdir-刪除一個資料夾"><a href="#rmdir-刪除一個資料夾" class="headerlink" title="rmdir:刪除一個資料夾"></a>rmdir:刪除一個資料夾</h3><p><img src="https://i.imgur.com/NjL9SEP.png"></p>
+<p>我先在這邊創建一個資料夾 apple</p>
+<p><img src="https://i.imgur.com/CCmL0VY.png"></p>
+<p>輸入 ls 確認 apple 資料夾被創建</p>
+<p><img src="https://i.imgur.com/xHBjlRO.png"></p>
+<p>之後輸入 <code>rmdir apple</code>來砍掉這個資料夾</p>
+<p><img src="https://i.imgur.com/DrkkseO.png"></p>
+<p>使用 ls 來確認檔案已經消失!</p>
+<p>刪除完畢!</p>
+<hr>
+<h3 id="rm-rf-刪除整個資料夾-要小心使用"><a href="#rm-rf-刪除整個資料夾-要小心使用" class="headerlink" title="rm -rf :刪除整個資料夾 要小心使用~!!"></a>rm -rf :刪除整個資料夾 要小心使用~!!</h3><p>這邊就不實測了，寫在這邊是為了提醒自己要小心使用這個語法</p>
+<hr>
+<h3 id="cp-複製"><a href="#cp-複製" class="headerlink" title="cp:複製"></a>cp:複製</h3><p>前面輸入要複製的檔案名稱，後面為複製出來的檔案名稱，例如:<code>cp index.html</code> <code>cpindex.html</code></p>
+<p><img src="https://i.imgur.com/1W1QIfh.png"></p>
+<p>這邊就是我要複製 index.html 然後複製出來的檔案名稱叫做 cpindex.html</p>
+<p><img src="https://i.imgur.com/quaj89i.png"></p>
+<p>接著輸入ls確認，已成功複製</p>
+<hr>
+<h3 id="mv-移動"><a href="#mv-移動" class="headerlink" title="mv:移動"></a>mv:移動</h3><p>跟複製的邏輯很像，前面是要移動的檔案後面是要移動到哪裡，例如:mv index.html test/<br><img src="https://i.imgur.com/RZZkzkI.png"></p>
+<p>這邊是將 index.html 檔案移動到test這個資料夾裡面</p>
+<p><img src="https://i.imgur.com/zaowTvT.png"></p>
+<p>cd 進入 test 資料夾後輸入 ls 確認，檔案成功移動到 test 資料夾裡面</p>
+<hr>
+<h3 id="cat-讀取檔案內容"><a href="#cat-讀取檔案內容" class="headerlink" title="cat:讀取檔案內容"></a>cat:讀取檔案內容</h3><p><img src="https://i.imgur.com/aAjWzST.png"></p>
+<p>輸入 cat 要讀取的檔案，例如 <code>cat index.html</code></p>
+<p>這裡就成功讀取 index.html 的內文了</p>
+<hr>
+<h3 id="clear-清除畫面"><a href="#clear-清除畫面" class="headerlink" title="clear:清除畫面"></a>clear:清除畫面</h3><p>這指令可以讓畫面上的指令都消失，當指令過多時可以clear掉複雜的指令，讓畫面更整潔</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-12 19:47:57
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/%E5%9F%BA%E7%A4%8E%E7%92%B0%E5%A2%83%E8%88%87%E5%B7%A5%E5%85%B7/" title="基礎環境與工具">
+                        <b>#</b> 基礎環境與工具
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2020/12/13/%E5%AE%89%E8%A3%9Dwindows%2010%20%E7%95%B6%E4%B8%ADlinux%20%E5%AD%90%E7%B3%BB%E7%B5%B1%20%E6%B5%81%E7%A8%8B/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Command-Line%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-text">Command Line常用指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Command-Line%E7%9A%84%E6%8C%87%E4%BB%A4%E4%B8%AD%EF%BC%8C%E6%9C%89%E5%B9%BE%E5%80%8B%E6%AF%94%E8%BC%83%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BC%B8%E5%85%A5%E6%B3%95"><span class="toc-text">Command Line的指令中，有幾個比較常用的輸入法:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cd-%E9%80%B2%E5%85%A5"><span class="toc-text">cd: 進入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls-%E6%9F%A5%E7%9C%8B"><span class="toc-text">ls: 查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mkdir-%E5%BB%BA%E7%AB%8B%E8%B3%87%E6%96%99%E5%A4%BE"><span class="toc-text">mkdir: 建立資料夾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwd-%E9%A1%AF%E7%A4%BA%E7%9B%AE%E5%89%8D%E7%9A%84%E8%B7%AF%E5%BE%91"><span class="toc-text">pwd:顯示目前的路徑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#touch-%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%80%8B%E6%AA%94%E6%A1%88"><span class="toc-text">touch:建立一個檔案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rmdir-%E5%88%AA%E9%99%A4%E4%B8%80%E5%80%8B%E8%B3%87%E6%96%99%E5%A4%BE"><span class="toc-text">rmdir:刪除一個資料夾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm-rf-%E5%88%AA%E9%99%A4%E6%95%B4%E5%80%8B%E8%B3%87%E6%96%99%E5%A4%BE-%E8%A6%81%E5%B0%8F%E5%BF%83%E4%BD%BF%E7%94%A8"><span class="toc-text">rm -rf :刪除整個資料夾 要小心使用~!!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cp-%E8%A4%87%E8%A3%BD"><span class="toc-text">cp:複製</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mv-%E7%A7%BB%E5%8B%95"><span class="toc-text">mv:移動</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat-%E8%AE%80%E5%8F%96%E6%AA%94%E6%A1%88%E5%85%A7%E5%AE%B9"><span class="toc-text">cat:讀取檔案內容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clear-%E6%B8%85%E9%99%A4%E7%95%AB%E9%9D%A2"><span class="toc-text">clear:清除畫面</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

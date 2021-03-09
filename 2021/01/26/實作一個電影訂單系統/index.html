@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      實作一個電影訂單系統 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">實作一個電影訂單系統</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/Javascript-%E4%BD%9C%E5%93%81/" title="Javascript 作品">
+                    <b>#</b> Javascript 作品
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="實作電影訂單系統-筆記"><a href="#實作電影訂單系統-筆記" class="headerlink" title="實作電影訂單系統 筆記"></a>實作電影訂單系統 筆記</h1><h1 id="作品"><a href="#作品" class="headerlink" title="作品"></a><a target="_blank" rel="noopener" href="https://hongchingisme.github.io/js_projects/mission_22/index.html">作品</a></h1><p><img src="https://i.imgur.com/LDE4gTA.png"></p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>首先，我們寫入一個選擇器，裡面寫入電影的選項。</p>
+<p>接著再寫入一個<code>showcase</code> 的列表清單，用來告訴使用者座位狀態。</p>
+<p>然後寫入我們座位區，用一個 <code>container</code> 包住，裡面有顯示螢幕、座位，這邊的一些座位寫入了 <code>occupied</code> 代表位置已經被預訂，增加與使用者的互動。</p>
+<p>最後寫入顯示的座位數量與總價。</p>
+<p><img src="https://i.imgur.com/icEGPZd.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;movie-container&quot;&gt;</span><br><span class="line">  &lt;label for&#x3D;&quot;&quot;&gt;Pick a movie&lt;&#x2F;label&gt;</span><br><span class="line">  &lt;select name&#x3D;&quot;&quot; id&#x3D;&quot;movie&quot;&gt;</span><br><span class="line">    &lt;option value&#x3D;&quot;10&quot;&gt;Avengers: Endgame ($10)&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value&#x3D;&quot;12&quot;&gt;Joker ($12)&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value&#x3D;&quot;8&quot;&gt;Toy Stroy 4 ($8)&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value&#x3D;&quot;9&quot;&gt;The line King ($9)&lt;&#x2F;option&gt;</span><br><span class="line">  &lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul class&#x3D;&quot;showcase&quot;&gt;</span><br><span class="line">  &lt;li&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;small&gt;N&#x2F;A&lt;&#x2F;small&gt;</span><br><span class="line">  &lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat selected&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;small&gt;Selected&lt;&#x2F;small&gt;</span><br><span class="line">  &lt;&#x2F;li&gt;</span><br><span class="line">  &lt;li&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat occupied&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;small&gt;Occupied&lt;&#x2F;small&gt;</span><br><span class="line">  &lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;screen&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;row&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat occupied&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat occupied&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;seat&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;p class&#x3D;&quot;text&quot;&gt;You have selected &lt;span id&#x3D;&quot;count&quot;&gt;0&lt;&#x2F;span&gt; seats for a price of &lt;span id&#x3D;&quot;total&quot;&gt;$0&lt;&#x2F;span&gt;&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>CSS 當中比較注意的用法是在螢幕的呈現，因為要讓螢幕有立體感，所以在<code>screen</code>加入了 X 軸 傾斜效果 <code> transform: rotateX(-45deg);</code></p>
+<p>然後在 <code>container </code> 中，使用<code>perspective</code> 達成透視變化效果。</p>
+<p>完成後的 css :  </p>
+<p><img src="https://i.imgur.com/S7HujX6.png"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">@import</span> url(<span class="string">&#x27;https://fonts.googleapis.com/css?family=Lato&amp;display=swap&#x27;</span>);</span><br><span class="line"></span><br><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#242333</span>;</span><br><span class="line">    <span class="attribute">color</span>:<span class="number">#fff</span> ;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-direction</span>: column;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;Lato&#x27;</span> sans-serif;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.movie-container</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>:  <span class="number">20px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.movie-container</span> select&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">padding</span>:  <span class="number">5px</span> <span class="number">15px</span> <span class="number">5px</span> <span class="number">15px</span>;</span><br><span class="line">    appearance:none;</span><br><span class="line">    -moz-appearance :none;</span><br><span class="line">    -webkit-appearance :none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#444451</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">3px</span>;</span><br><span class="line">    <span class="attribute">border-top-left-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-top-right-radius</span>: <span class="number">10px</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span><span class="selector-class">.selected</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#6feaf6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span><span class="selector-class">.occupied</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span><span class="selector-pseudo">:nth-of-type</span>(<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span><span class="selector-pseudo">:nth-last-of-type</span>(<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.seat</span><span class="selector-pseudo">:not</span>(<span class="selector-class">.occupied</span>)<span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.showcase</span> <span class="selector-class">.seat</span><span class="selector-pseudo">:not</span>(<span class="selector-class">.occupied</span>)<span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: default;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.showcase</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>, <span class="number">0.1</span>);</span><br><span class="line">    <span class="attribute">padding</span>:  <span class="number">5px</span> <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#777</span>;</span><br><span class="line">    <span class="attribute">list-style-type</span>: none;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.showcase</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.showcase</span> <span class="selector-tag">li</span> small&#123;</span><br><span class="line">    <span class="attribute">margin</span>:  <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.row</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.screen</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">70px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">15px</span> <span class="number">0</span> ;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(-<span class="number">45deg</span>);</span><br><span class="line">    <span class="attribute">box-shadow</span>:  <span class="number">0</span> <span class="number">3px</span> <span class="number">10px</span> <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0.7</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 利用　perspective ( 透視 ) 讓他看來有傾斜，但要搭配上面的transform 讓角度變化*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">perspective</span>: <span class="number">1000px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span><span class="selector-class">.text</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>:  <span class="number">5px</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span><span class="selector-class">.text</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#6feaf6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><h2 id="首先抓取-DOM"><a href="#首先抓取-DOM" class="headerlink" title="首先抓取 DOM"></a>首先抓取 DOM</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> container = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.container&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 querySelectorAll 可以將重複的class 變成陣列，如果是使用querySelector的話只會抓取重複class的第一個</span></span><br><span class="line"><span class="keyword">const</span> seats = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.row .seat:not(.occupied)&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> count = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;count&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> total = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;total&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> movieSelect = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;movie&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因為這個value值我們要做加減，所以使用 + 號 把它從 string 變成 number ( + = parseInt)</span></span><br><span class="line"><span class="keyword">let</span> ticketPrice = +movieSelect.value</span><br></pre></td></tr></table></figure>
+
+<h2 id="接著寫入監聽事件-click"><a href="#接著寫入監聽事件-click" class="headerlink" title="接著寫入監聽事件 click"></a>接著寫入監聽事件 click</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 寫入點擊的事件監聽，如果點擊的元素的 class 包含 seat &quot;並且&quot; &quot;非&quot; 點擊的元素包含 occupied 的話，給予點擊的元素增加 selected 的元素。</span></span><br><span class="line"><span class="comment">// target(目標)</span></span><br><span class="line"><span class="comment">// classList (該元素的class)</span></span><br><span class="line"><span class="comment">// contains (包含)</span></span><br><span class="line"><span class="comment">// toggle(新增與取消) 像這邊是點擊事件，所以會變成點一下新增，再點一次取消。  </span></span><br><span class="line">container.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(e.target.classList.contains(<span class="string">&#x27;seat&#x27;</span>) &amp;&amp;!e.target.classList.contains(<span class="string">&#x27;occupied&#x27;</span>))&#123;</span><br><span class="line">        e.target.classList.toggle(<span class="string">&#x27;selected&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    updateSelectedCount();</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>透過點擊之後如果被典籍的物件的 class 當中包含 seat 並且沒有包含  occupied 的話，給予一個新的 class selected ，但這邊要特別注意的是，我們有新增一個寫入方法叫做 <code>toggle</code>，這個方法是讓重複點擊的時候，反覆取消與新增這個 class 達成像開關按鈕一樣的功能。</p>
+<p>接著我們下面呼叫了 <code>updateSelectedCount();</code></p>
+<h2 id="updateSelectedCount-寫入更新價錢的函式"><a href="#updateSelectedCount-寫入更新價錢的函式" class="headerlink" title="updateSelectedCount 寫入更新價錢的函式"></a>updateSelectedCount 寫入更新價錢的函式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateSelectedCount</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> selectedSeats = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.row .seat.selected&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> selectedSeatsCount = selectedSeats.length;</span><br><span class="line">    count.innerText = selectedSeatsCount;</span><br><span class="line">    total.innerText = selectedSeatsCount *ticketPrice;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>寫入更新價錢的函式，這邊我們先將訂位成功的 class DOM 抓出來，然而，當我們使用 <code>querySelectorAll</code> 去抓取 DOM 的時候，它會返還的是一個陣列，所以我可以利用陣列的長度去計算票價。</p>
+<p>我們先讓定位成功的陣列 = <code>count</code> 裡的數量，讓介面顯示可以有更新後的數字。</p>
+<p>接著在價錢部分，我們讓陣列的長度 去乘上 <code>ticketPrice</code> 而 <code>ticketPrice</code> 這邊要特別注意，我們從上方的程式碼可以看發現</p>
+<p><code>let ticketPrice = +movieSelect.value</code></p>
+<p>為什麼只有  <code>ticketPrice</code> 使用 let 呢?</p>
+<p>因為，在 js 當中，使用 <code>const</code>去宣告變數的話，代表該變數不能變動，像我們這邊會對於不同的選項的<code>value</code>有不同的數值，那就不能用<code>const</code> 使用 let 較為恰當。</p>
+<p>透過上面的方式就可以取得點擊後更新的價錢。</p>
+<p><img src="https://i.imgur.com/nNKRK7K.png"></p>
+<h2 id="寫入事件監聽-change"><a href="#寫入事件監聽-change" class="headerlink" title="寫入事件監聽 change"></a>寫入事件監聽 change</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">movieSelect.addEventListener(<span class="string">&#x27;change&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    ticketPrice = +e.target.value;</span><br><span class="line">    updateSelectedCount;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>我們寫入一個選擇器的事件，讓我們再更換選擇器裡面的選項時觸發事件，觸發的函式功能為:</p>
+<p>票價 = 被選擇的選項的value<br>接著呼叫函式 <code>setMovieData</code> 參數為 <code>(e.target.selectedIndex, e.target.value)</code><br>這段函式式讓我們為了保存選項的陣列<br>最後再呼叫一次價錢更新，讓我們在不同的電影時價錢是正確的顯示</p>
+<h2 id="寫入更新價錢的函式中的-localStorage"><a href="#寫入更新價錢的函式中的-localStorage" class="headerlink" title="寫入更新價錢的函式中的  localStorage"></a>寫入更新價錢的函式中的  localStorage</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateSelectedCount</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> selectedSeats = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.row .seat.selected&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//抓取定位成功的返還陣列，每訂位成功就返還一個 seats 陣列內的 seat 的位置</span></span><br><span class="line">    <span class="keyword">const</span> seatsIndex = [...selectedSeats].map(<span class="function"><span class="keyword">function</span>(<span class="params">seat</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [...seats].indexOf(seat);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//設定localStorage讓使用者關閉瀏覽器時不會使資料消失</span></span><br><span class="line">    <span class="comment">//setItem 存入資料</span></span><br><span class="line">    <span class="comment">//localStorage儲存資料的時候，只接受「字串string」，所以資料會被強制變成string，所以透過</span></span><br><span class="line">    <span class="comment">//使用JSON.stringify()方法，將要儲存的資料轉換為 JSON 格式的字串</span></span><br><span class="line">    <span class="comment">//要取出資料時，再透過 JSON.parse() 方法，將資料轉換回原本的格式</span></span><br><span class="line">    <span class="comment">//這裡就是 存入 被定位成功的陣列。</span></span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;selectedSeats&#x27;</span>,<span class="built_in">JSON</span>.stringify(seatsIndex));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> selectedSeatsCount = selectedSeats.length;</span><br><span class="line">    </span><br><span class="line">    count.innerText = selectedSeatsCount;</span><br><span class="line">    total.innerText = selectedSeatsCount *ticketPrice;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在更新價錢的函式當中，我們加入一個 seatsIndex 變數，為了要抓取陣列，因為我們點取後訂位成功的值會以陣列的方式回傳，所以我們將成功的陣列後面寫上<code>.map</code> 。</p>
+<p><code>.map</code>功能，可以讓陣列每個數值都執行後面的函式</p>
+<p>接著寫入函式，讓程式返還給我們 在 陣列 <code>[seats]</code>裡面的 <code>seat</code> 位置，白話一點就是，當我們選取位置後，會返還陣列，然後我們調查返還的值 把這個值變成 <code>seatsIndex</code>。</p>
+<p>接著使用<code>localStorage</code>將資料儲存在瀏覽器當中，使用<code>setItem</code> 可以將資料儲存，後面寫入要儲存的資料 (儲存的名稱 , 儲存的數據)，也就是<code>&#39;selectedSeats&#39;,JSON.stringify(seatsIndex))</code></p>
+<p>我們儲存的數據是<code>seatsIndex</code>，存檔名稱為<code>selectedSeats</code> </p>
+<p>這邊有個問題，就是為什麼要用 <code>JSON.stringify</code> 去把數據包起來?</p>
+<p>因為，當我們使用<code>localStorage</code> 時候，它會把數字儲存為字串，但因為我們需要計算座位數量，需要的數據類型要為 <code>Number</code>不可以是 <code>string</code> ，所以藉由  <code>JSON.stringify</code> 可以把字串先存在JOSN當中，當要使用的時候再用<code>JSON.parse</code>去呼叫出來，會返還原本的數據類型。</p>
+<h2 id="寫入事件監聽-change-當中的-localStorage"><a href="#寫入事件監聽-change-當中的-localStorage" class="headerlink" title="寫入事件監聽 change 當中的 localStorage"></a>寫入事件監聽 change 當中的 localStorage</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">movieSelect.addEventListener(<span class="string">&#x27;change&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    ticketPrice = +e.target.value;</span><br><span class="line">    setMovieData(e.target.selectedIndex, e.target.value);</span><br><span class="line">    updateSelectedCount;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>呼叫一個函式<code>setMovieData(e.target.selectedIndex, e.target.value);</code></p>
+<p>接著在上面寫入函式的功能:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setMovieData</span>(<span class="params">movieIndex,moviePrice</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;selectedMovieIndex&#x27;</span>, movieIndex);</span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;selectedMoviePrice&#x27;</span>, moviePrice);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>寫入<code>setMovieData</code>函式，參數為(被選取到的選項的值 , value)<br>將資料儲存下來，當我們選擇不同的電影時，會保存資料。</p>
+<p><img src="https://i.imgur.com/3WhAhmw.png"></p>
+<h2 id="本專案最難地方-判斷遺失資料-並復原"><a href="#本專案最難地方-判斷遺失資料-並復原" class="headerlink" title="本專案最難地方 判斷遺失資料 並復原"></a>本專案最難地方 判斷遺失資料 並復原</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">populateUI</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> selectedSeats = <span class="built_in">JSON</span>.parse(<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;selectedSeats&#x27;</span>));</span><br><span class="line">    <span class="comment">//當我們選擇後，重新整理頁面，會將原本儲存好的陣列拿出來比對，如果他有選擇並且重整，陣列會為-1開始</span></span><br><span class="line">    <span class="comment">//因為重新整理後，原本的陣列就會重新，代表重整前的數據已經沒了，但資料還有，所以就會是負值</span></span><br><span class="line">    <span class="comment">//透過這個機制，我們建立一個 if ，如果儲存的資料不是空的，或者大於0的時候，讓每個seats執行函式</span></span><br><span class="line">    <span class="comment">//如果seat儲存的資料 &gt;-1 就把那個 seat 加入 class selected </span></span><br><span class="line">    <span class="keyword">if</span>(selectedSeats !== <span class="literal">null</span> &amp;&amp; selectedSeats.length&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        seats.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">seat,index</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (selectedSeats.indexOf(index) &gt;-<span class="number">1</span>)&#123;</span><br><span class="line">                seat.classList.add(<span class="string">&#x27;selected&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//跟上面一樣，重新整理頁面的時候，如果資料不是空的，就執行，讓我們抓取之前的電影index</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> selectedMovieIndex = <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;selectedMovieIndex&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(selectedMovieIndex !== <span class="literal">null</span> )&#123;</span><br><span class="line">        movieSelect.selectedIndex = selectedMovieIndex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>這邊我們寫入一個函式<code>populateUI</code></p>
+<p>並在裡邊把儲存的資料給抓出來。<br>抓出來後判斷。</p>
+<p>如果(被選的位置 不等於空，並且被選擇的位置長度&gt;0)執行</p>
+<p>每個座位的參數，如果是大於 -1 的話，就加入 class  <code>&#39;selected&#39;</code></p>
+<p>這邊意思為:</p>
+<p>當我們重整網頁的時候，原本選取的位置會把數據儲存起來，但重新整理後，就消失了，但是紀錄還在。<br>但我們最前面有說到，我們選取位置後，它是返回陣列給我們對吧。<br>但是我們儲存在瀏覽器中的陣列呢?它是存在的，但它會是以 負號方式出現，因為他只是被保存，例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; [1,2,3,4,5,6,7];</span><br><span class="line">indexOf(100);</span><br></pre></td></tr></table></figure>
+
+<p>當我們陣列當中只有1~7，但現在我要抓的是100的位置，但他不再陣列內，系統就會回傳 -1 為它的位置。</p>
+<p>所以，我們透過這個機制，讓因為重新整理後變成-1的數據，增加 class 讓它變回訂位成功的狀態</p>
+<p>接著下面，抓取選擇器就很簡單，一樣讀取<code>localStorage</code>內的檔案之後，如果裡面的檔案不是空的，因為剛剛選擇過一定有參數。<br>再將<code>movieSelect.selectedIndex</code> = 這個參數 <code>selectedMovieIndex</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">movieSelect.addEventListener(<span class="string">&#x27;change&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    ticketPrice = +e.target.value;</span><br><span class="line">    setMovieData(e.target.selectedIndex, e.target.value);</span><br><span class="line">    updateSelectedCount;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>新參數就會被抓來事件當中，把它變成當前的參數，這樣重新整理就不會不見了。</p>
+<h3 id="完整的-Javascript-code"><a href="#完整的-Javascript-code" class="headerlink" title="完整的 Javascript code"></a>完整的 Javascript code</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> container = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.container&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 querySelectorAll 可以將重複的class 變成陣列，如果是使用querySelector的話只會抓取重複class的第一個</span></span><br><span class="line"><span class="keyword">const</span> seats = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.row .seat:not(.occupied)&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> count = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;count&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> total = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;total&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> movieSelect = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;movie&#x27;</span>)</span><br><span class="line"></span><br><span class="line">populateUI();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因為這個value值我們要做加減，所以使用 + 號 把它從 string 變成 number ( + = parseInt)</span></span><br><span class="line"><span class="keyword">let</span> ticketPrice = +movieSelect.value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 儲存更換電影之後，電影的價錢與總價</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setMovieData</span>(<span class="params">movieIndex,moviePrice</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;selectedMovieIndex&#x27;</span>, movieIndex);</span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;selectedMoviePrice&#x27;</span>, moviePrice);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//寫入計算價錢的函式，我們定義選取成功的數量，因為當我們使用querySelectorAll的時候，它會回傳陣列，所以我們可以透過長度去乘上選取上的價錢。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateSelectedCount</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> selectedSeats = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;.row .seat.selected&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//抓取定位成功的返還陣列，每訂位成功就返還一個 seats 陣列內的 seat 的位置</span></span><br><span class="line">    <span class="keyword">const</span> seatsIndex = [...selectedSeats].map(<span class="function"><span class="keyword">function</span>(<span class="params">seat</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [...seats].indexOf(seat);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//設定localStorage讓使用者關閉瀏覽器時不會使資料消失</span></span><br><span class="line">    <span class="comment">//setItem 存入資料</span></span><br><span class="line">    <span class="comment">//localStorage儲存資料的時候，只接受「字串string」，所以資料會被強制變成string，所以透過</span></span><br><span class="line">    <span class="comment">//使用JSON.stringify()方法，將要儲存的資料轉換為 JSON 格式的字串</span></span><br><span class="line">    <span class="comment">//要取出資料時，再透過 JSON.parse() 方法，將資料轉換回原本的格式</span></span><br><span class="line">    <span class="comment">//這裡就是 存入 被定位成功的陣列。</span></span><br><span class="line">    <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;selectedSeats&#x27;</span>,<span class="built_in">JSON</span>.stringify(seatsIndex));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> selectedSeatsCount = selectedSeats.length;</span><br><span class="line">    </span><br><span class="line">    count.innerText = selectedSeatsCount;</span><br><span class="line">    total.innerText = selectedSeatsCount *ticketPrice;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">populateUI</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> selectedSeats = <span class="built_in">JSON</span>.parse(<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;selectedSeats&#x27;</span>));</span><br><span class="line">    <span class="comment">//當我們選擇後，重新整理頁面，會將原本儲存好的陣列拿出來比對，如果他有選擇並且重整，陣列會為-1開始</span></span><br><span class="line">    <span class="comment">//因為重新整理後，原本的陣列就會重新，代表重整前的數據已經沒了，但資料還有，所以就會是負值</span></span><br><span class="line">    <span class="comment">//透過這個機制，我們建立一個 if ，如果儲存的資料不是空的，或者大於0的時候，讓每個seats執行函式</span></span><br><span class="line">    <span class="comment">//如果seat儲存的資料 &gt;-1 就把那個 seat 加入 class selected </span></span><br><span class="line">    <span class="keyword">if</span>(selectedSeats !== <span class="literal">null</span> &amp;&amp; selectedSeats.length&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        seats.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">seat,index</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (selectedSeats.indexOf(index) &gt;-<span class="number">1</span>)&#123;</span><br><span class="line">                seat.classList.add(<span class="string">&#x27;selected&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//跟上面一樣，重新整理頁面的時候，如果資料不是空的，就執行，讓我們抓取之前的電影index</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> selectedMovieIndex = <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;selectedMovieIndex&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(selectedMovieIndex !== <span class="literal">null</span> )&#123;</span><br><span class="line">        movieSelect.selectedIndex = selectedMovieIndex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//寫入不同選項，價錢不同疊加的監聽事件，當我們修改選項後，將指定的選項目標的value變成ticketPrice</span></span><br><span class="line"><span class="comment">//呼叫儲存資料的函式 14行</span></span><br><span class="line">movieSelect.addEventListener(<span class="string">&#x27;change&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    ticketPrice = +e.target.value;</span><br><span class="line">    setMovieData(e.target.selectedIndex, e.target.value);</span><br><span class="line">    updateSelectedCount;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 寫入點擊的事件監聽，如果點擊的元素的 class 包含 seat &quot;並且&quot; &quot;非&quot; 點擊的元素包含 occupied 的話，給予點擊的元素增加 selected 的元素。</span></span><br><span class="line"><span class="comment">// target(目標)</span></span><br><span class="line"><span class="comment">// classList (該元素的class)</span></span><br><span class="line"><span class="comment">// contains (包含)</span></span><br><span class="line"><span class="comment">// toggle(新增與取消) 像這邊是點擊事件，所以會變成點一下新增，再點一次取消。  </span></span><br><span class="line">container.addEventListener(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(e.target.classList.contains(<span class="string">&#x27;seat&#x27;</span>) &amp;&amp;!e.target.classList.contains(<span class="string">&#x27;occupied&#x27;</span>))&#123;</span><br><span class="line">        e.target.classList.toggle(<span class="string">&#x27;selected&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    updateSelectedCount();</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//更新價錢與座位</span></span><br><span class="line">updateSelectedCount();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><a target="_blank" rel="noopener" href="https://wcc723.github.io/css/2013/10/11/css-perspective/">CSS沒有極限 - CSS transform-3D的透視(perspective)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/jquery/eff-toggle.html">jQuery toggle() 方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/jquery/event-change.html">jQuery change() 方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/228964/">jQuery訪問瀏覽器本地儲存cookie、localStorage和sessionStorage的基本用法</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse()</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a></p>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10228571">JS 迴圈升級的陣列 Array 方法 forEach()</a></p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/01/24/%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E8%A1%A8%E5%96%AE%E6%AA%A2%E6%9F%A5%E5%99%A8/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-01-26 21:48:01
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/Javascript-%E4%BD%9C%E5%93%81/" title="Javascript 作品">
+                        <b>#</b> Javascript 作品
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/01/28/%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E5%8C%AF%E7%8E%87%E8%BD%89%E6%8F%9B%E5%99%A8/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E9%9B%BB%E5%BD%B1%E8%A8%82%E5%96%AE%E7%B3%BB%E7%B5%B1-%E7%AD%86%E8%A8%98"><span class="toc-text">實作電影訂單系統 筆記</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E5%93%81"><span class="toc-text">作品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript"><span class="toc-text">Javascript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E6%8A%93%E5%8F%96-DOM"><span class="toc-text">首先抓取 DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E8%91%97%E5%AF%AB%E5%85%A5%E7%9B%A3%E8%81%BD%E4%BA%8B%E4%BB%B6-click"><span class="toc-text">接著寫入監聽事件 click</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#updateSelectedCount-%E5%AF%AB%E5%85%A5%E6%9B%B4%E6%96%B0%E5%83%B9%E9%8C%A2%E7%9A%84%E5%87%BD%E5%BC%8F"><span class="toc-text">updateSelectedCount 寫入更新價錢的函式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5%E4%BA%8B%E4%BB%B6%E7%9B%A3%E8%81%BD-change"><span class="toc-text">寫入事件監聽 change</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5%E6%9B%B4%E6%96%B0%E5%83%B9%E9%8C%A2%E7%9A%84%E5%87%BD%E5%BC%8F%E4%B8%AD%E7%9A%84-localStorage"><span class="toc-text">寫入更新價錢的函式中的  localStorage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%AB%E5%85%A5%E4%BA%8B%E4%BB%B6%E7%9B%A3%E8%81%BD-change-%E7%95%B6%E4%B8%AD%E7%9A%84-localStorage"><span class="toc-text">寫入事件監聽 change 當中的 localStorage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%B0%88%E6%A1%88%E6%9C%80%E9%9B%A3%E5%9C%B0%E6%96%B9-%E5%88%A4%E6%96%B7%E9%81%BA%E5%A4%B1%E8%B3%87%E6%96%99-%E4%B8%A6%E5%BE%A9%E5%8E%9F"><span class="toc-text">本專案最難地方 判斷遺失資料 並復原</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E7%9A%84-Javascript-code"><span class="toc-text">完整的 Javascript code</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

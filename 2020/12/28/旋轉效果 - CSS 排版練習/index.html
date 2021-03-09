@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="John Doe" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      旋轉效果 - CSS 排版練習 
+      
+      
+      |
+    
+     HongChing&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">HongChing's blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/projects/">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">旋轉效果 - CSS 排版練習</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="" title="Update time"></i>
+         
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/CSS-%E4%BD%9C%E5%93%81/" title="CSS 作品">
+                    <b>#</b> CSS 作品
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="旋轉效果-CSS-排版練習"><a href="#旋轉效果-CSS-排版練習" class="headerlink" title="旋轉效果 - CSS 排版練習"></a>旋轉效果 - CSS 排版練習</h1><h1 id="作品"><a href="#作品" class="headerlink" title="作品"></a><a target="_blank" rel="noopener" href="https://hongchingisme.github.io/rotate_web_practice/">作品</a></h1><p><img src="https://i.imgur.com/zM1HIaW.png"></p>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>第三個專案我挑了一個很酷的動畫網頁當作主題，因為前面已經做了一個完整的個人網站與一個響應式實作的網站，因此想挑一些不一樣的。</p>
+<p>這次學到了一些動畫變化的寫法，很酷，可以好好筆記紀錄一下。</p>
+<p>此專案都是將物件定位在 container 裡面，接著利用偏移去定到要的位置，這種寫法我認為不太好，因為如果要做成響應式的話，之後要製作響應式上會很麻煩，等於你又要重切一次。</p>
+<h2 id="cursor屬性"><a href="#cursor屬性" class="headerlink" title="cursor屬性"></a>cursor屬性</h2><p>cursor 屬性可以變更滑鼠的圖示，而專案中都是寫入 <code>cursor: pointer;</code>  意思是將滑鼠的圖示變成手套的圖案</p>
+<p><img src="https://i.imgur.com/s9psIEU.png"></p>
+<p>後來調查發現有很多種的樣式可以改變</p>
+<h3 id="CSS-語法「cursor-屬性」改變滑鼠游標的形狀"><a href="#CSS-語法「cursor-屬性」改變滑鼠游標的形狀" class="headerlink" title="CSS 語法「cursor 屬性」改變滑鼠游標的形狀"></a><a target="_blank" rel="noopener" href="http://www.flycan.com/article/css/css-cursor-209.html">CSS 語法「cursor 屬性」改變滑鼠游標的形狀</a></h3><hr>
+<h2 id="calc-語法"><a href="#calc-語法" class="headerlink" title="calc() 語法"></a>calc() 語法</h2><p>第一次碰到這個寫法，調查後發現是數值運算的寫法，可以用在寫入:</p>
+<ul>
+<li><p><length> 長度</p>
+</li>
+<li><p><frequency> 頻率</p>
+</li>
+<li><p><angle> 角度</p>
+</li>
+<li><p><time> 時間</p>
+</li>
+<li><p><number> 數字或者是</p>
+</li>
+<li><p><integer> 整數</p>
+</li>
+</ul>
+<p>寫法範例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">100%</span> - <span class="number">50px</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>意思是寬度的100% 減去 50px ，就得到要的寬度。</p>
+<p>當然除了減，也可以有其他的算法:</p>
+<ul>
+<li><code>+</code>：加</li>
+<li><code>-</code>：減</li>
+<li><code>*</code>：乘。其中一個運算參數必須是數字 (number)</li>
+<li><code>/</code>：除。除數必須是數字，除數不可為零，會造成 HTML 解析錯誤。</li>
+</ul>
+<p>專案中是利用 calc 去定位，方法如下:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.sideImg</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">800px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">800px</span>;</span><br><span class="line">    <span class="attribute">display</span>: grid;</span><br><span class="line">    place-items: center;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">top</span>:<span class="built_in">calc</span>(<span class="number">50%</span> - <span class="number">400px</span>);</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">#eb3bb5</span> <span class="number">1px</span> solid;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">30deg</span>, transparent <span class="number">50%</span> , <span class="number">#eb3bb5</span> <span class="number">50%</span>);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">30deg</span>) <span class="built_in">scale</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>這裡要先絕對定位後，針對定位的地方做位移，由<font color=#FF0000>top:calc(50% - 400px);</font>    寫法當中，寫法的意思是上面偏移50%的高度，然後少400px。</p>
+<h3 id="CSS：-calc-數值運算"><a href="#CSS：-calc-數值運算" class="headerlink" title="CSS： calc() 數值運算"></a><a target="_blank" rel="noopener" href="https://5xruby.tw/posts/css-calc/">CSS： calc() 數值運算</a></h3><hr>
+<h2 id="clip-path-繪製多邊形"><a href="#clip-path-繪製多邊形" class="headerlink" title="clip-path  繪製多邊形"></a>clip-path  繪製多邊形</h2><p>此切法，會因為瀏覽器的不同而有所支援，目前應該是 google瀏覽器有支援，所以用法不常見</p>
+<p>在專案中左邊的 bar 就是用多邊形去切出來的</p>
+<p><img src="https://i.imgur.com/0Pz77dO.png"></p>
+<p>切法為:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">0px</span> <span class="number">0px</span>, <span class="number">100%</span> <span class="number">15%</span>, <span class="number">100%</span> <span class="number">50%</span>, <span class="number">100%</span> <span class="number">85%</span>, <span class="number">0px</span> <span class="number">100%</span>, <span class="number">0%</span> <span class="number">50%</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>polygon</strong> 為繪製正方形的語法，繪製方法就要計算了，所以這邊附上找的範例來解釋比較方便:</p>
+<p><img src="https://i.imgur.com/Gfk4bfk.png"></p>
+<p>這方面我還沒辦法言語解釋，但透過數值更換可以理解繪製的方法。</p>
+<p>其他的clip-path繪製的方法可以參考連結</p>
+<h2 id="運用-clip-path-的純-CSS-形狀變換"><a href="#運用-clip-path-的純-CSS-形狀變換" class="headerlink" title="運用 clip-path 的純 CSS 形狀變換"></a><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201503/css-clip-path.html">運用 clip-path 的純 CSS 形狀變換</a></h2><hr>
+<h2 id="linear-gradient-的應用"><a href="#linear-gradient-的應用" class="headerlink" title="linear-gradient 的應用"></a>linear-gradient 的應用</h2><p>效果:</p>
+<p><img src="https://i.imgur.com/drLsHFf.png"></p>
+<p>寫法:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="attribute">border</span>: <span class="number">#eb3bb5</span> <span class="number">1px</span> solid;</span><br><span class="line"><span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">30deg</span>, transparent <span class="number">50%</span> , <span class="number">#eb3bb5</span> <span class="number">50%</span>);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>這邊給予容器一個 外框圓，然後背景利用 linear-gradient 的特性，給予 transparent (透明) 50% (一半的背景)</p>
+<p>這樣就可以達到一半的背景有圖片另一面為透明的效果。</p>
+<hr>
+<h3 id="rotateZ"><a href="#rotateZ" class="headerlink" title="rotateZ"></a>rotateZ</h3><p>這邊是讓我們的圖案有旋轉效果的地方，專案中是寫入</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">30deg</span>) <span class="built_in">scale</span>(<span class="number">1</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>達成旋轉為 Z 主軸向右邊轉30度 與縮放效果</p>
+<hr>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/26/%E5%8F%AF%E6%8E%A5%E6%94%B6%E8%A1%A8%E5%96%AE%E7%9A%84%E5%8A%9F%E8%83%BD%E7%B6%B2%E9%A0%81%20-%20CSS%20%E6%8E%92%E7%89%88%E7%B7%B4%E7%BF%92/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-28 21:48:01
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/CSS-%E4%BD%9C%E5%93%81/" title="CSS 作品">
+                        <b>#</b> CSS 作品
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/01/01/Javascript%20%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%B4%B9%20/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%8B%E8%BD%89%E6%95%88%E6%9E%9C-CSS-%E6%8E%92%E7%89%88%E7%B7%B4%E7%BF%92"><span class="toc-text">旋轉效果 - CSS 排版練習</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E5%93%81"><span class="toc-text">作品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%83%E5%BE%97"><span class="toc-text">心得</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cursor%E5%B1%AC%E6%80%A7"><span class="toc-text">cursor屬性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E8%AA%9E%E6%B3%95%E3%80%8Ccursor-%E5%B1%AC%E6%80%A7%E3%80%8D%E6%94%B9%E8%AE%8A%E6%BB%91%E9%BC%A0%E6%B8%B8%E6%A8%99%E7%9A%84%E5%BD%A2%E7%8B%80"><span class="toc-text">CSS 語法「cursor 屬性」改變滑鼠游標的形狀</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#calc-%E8%AA%9E%E6%B3%95"><span class="toc-text">calc() 語法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS%EF%BC%9A-calc-%E6%95%B8%E5%80%BC%E9%81%8B%E7%AE%97"><span class="toc-text">CSS： calc() 數值運算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#clip-path-%E7%B9%AA%E8%A3%BD%E5%A4%9A%E9%82%8A%E5%BD%A2"><span class="toc-text">clip-path  繪製多邊形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8B%E7%94%A8-clip-path-%E7%9A%84%E7%B4%94-CSS-%E5%BD%A2%E7%8B%80%E8%AE%8A%E6%8F%9B"><span class="toc-text">運用 clip-path 的純 CSS 形狀變換</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linear-gradient-%E7%9A%84%E6%87%89%E7%94%A8"><span class="toc-text">linear-gradient 的應用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rotateZ"><span class="toc-text">rotateZ</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/hongchingisme">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100000444485283">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>
